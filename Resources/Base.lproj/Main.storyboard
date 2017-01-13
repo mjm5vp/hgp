@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-9E-5PI">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxx-Nc-yIt">
+                                <frame key="frameInset" minX="154" minY="140" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Map"/>
+                                <connections>
+                                    <segue destination="IEd-Zz-aYg" kind="show" id="hA5-Ym-Hkf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ATz-Zb-ryD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="67.916041979010501"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="fv0-zW-7PK">
+            <objects>
+                <viewController storyboardIdentifier="view2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IEd-Zz-aYg" customClass="MapViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rfn-IE-0ng"/>
+                        <viewControllerLayoutGuide type="bottom" id="Adj-dX-Rqg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t0z-fN-3w9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3U-Zr-0rZ">
+                                <connections>
+                                    <outlet property="delegate" destination="IEd-Zz-aYg" id="guK-DK-eGg"/>
+                                </connections>
+                            </mapView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="25" placeholderIntrinsicHeight="25" image="basic.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifV-0c-p5r">
+                                <frame key="frameInset" minX="175" minY="375" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="0kT-5q-4cM"/>
+                                    <constraint firstAttribute="height" constant="25" id="EKt-wa-mlL"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szb-BY-WnO">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="2ev-zK-gGh"/>
+                                    <constraint firstAttribute="height" constant="80" id="Ebh-jf-bgw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="JmH-Ae-gy0"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="O2m-lZ-fBd"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="toilet copy.png"/>
+                                <connections>
+                                    <action selector="toiletFlush:" destination="IEd-Zz-aYg" eventType="touchUpInside" id="oCn-dO-wa6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E3U-Zr-0rZ" firstAttribute="leading" secondItem="t0z-fN-3w9" secondAttribute="leading" id="2QU-89-3Lv"/>
+                            <constraint firstAttribute="trailing" secondItem="Szb-BY-WnO" secondAttribute="trailing" id="4hV-L5-xzy"/>
+                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerX" secondItem="E3U-Zr-0rZ" secondAttribute="centerX" id="5Ld-pk-SmU"/>
+                            <constraint firstAttribute="bottom" secondItem="E3U-Zr-0rZ" secondAttribute="bottom" id="OYU-zX-Sxp"/>
+                            <constraint firstAttribute="trailing" secondItem="E3U-Zr-0rZ" secondAttribute="trailing" id="Vny-D3-JFB"/>
+                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerY" secondItem="E3U-Zr-0rZ" secondAttribute="centerY" id="g7M-Qq-sJJ"/>
+                            <constraint firstItem="E3U-Zr-0rZ" firstAttribute="top" secondItem="rfn-IE-0ng" secondAttribute="bottom" id="iQS-RI-fNw"/>
+                            <constraint firstAttribute="bottom" secondItem="Szb-BY-WnO" secondAttribute="bottom" id="wh5-Ds-D7A"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Map" id="xVe-Er-68P">
+                        <barButtonItem key="rightBarButtonItem" image="basic.png" id="4GG-7P-vOn">
+                            <inset key="imageInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <color key="tintColor" red="0.25717850129999997" green="0.1174257325" blue="0.074748544230000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="pooSelectorButton:" destination="IEd-Zz-aYg" id="jYZ-P8-4Fd"/>
+                                <segue destination="t4h-GH-LtE" kind="show" identifier="seg1" id="rBm-nx-Rev"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="E3U-Zr-0rZ" id="c9S-pC-4X0"/>
+                        <outlet property="pooPlacer" destination="ifV-0c-p5r" id="Ab1-Xs-Rq4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rhy-xY-zUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904.8" y="67.916041979010501"/>
+        </scene>
+        <!--Selector View Controller-->
+        <scene sceneID="jV6-nd-PsZ">
+            <objects>
+                <viewController id="t4h-GH-LtE" customClass="SelectorViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LHd-T5-Zb3"/>
+                        <viewControllerLayoutGuide type="bottom" id="5gl-il-DWB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wN6-bM-QmJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-bD-w7r">
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qzr-r1-dgR">
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="1016"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xvw-DK-BmW">
+                                                <frame key="frameInset" minY="8" width="375" height="890"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hwh-Ek-HxW">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDc-bT-fUV">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="basic.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="sB4-8n-ukw"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptx-Hm-LbO">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="100.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="nZB-BD-Tgt"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mu-Ow-4nM">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="basketball.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="PfA-IZ-94i"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="Eua-By-FCE"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rrJ-o0-xLB">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwG-zR-pyf">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="beer.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="Mdg-gl-TAy"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0p0-oj-paj">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="birthday.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="0Sb-C0-4gW"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3P-7F-6Uc">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="coffee.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="UQA-xg-Lll"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="bdX-8P-RuO"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zqL-eV-saH">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1U-gU-E4b">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="corn.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="9I8-Mc-eo5"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlH-k7-dif">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="cry.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="chZ-ab-N7l"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2n-IS-cEq">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="fat.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="dMx-MG-ynW"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="gja-qm-X6f"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yzn-t1-9QW">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79a-dz-1Kf">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="fire.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="PKb-mN-9R5"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-9W-9px">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="gay.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="LXN-2M-iv0"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-zQ-M4T">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="girl.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="GIn-zB-iN8"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="SEq-WU-4Xb"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BHD-45-cSB">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-7T-JRf">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="goblin.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="Udg-MI-6bU"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b3-lH-Hbf">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="grin.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="AUh-we-fij"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDt-Mj-iRl">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="hornsAngry.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="DJs-Tc-Pq9"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="aAQ-VS-n2f"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-78-pFA">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Ky-L1k">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="iceCream.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="VeB-ti-7Xn"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqM-MM-QZw">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="kiss.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="KLn-Gz-ccn"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI8-f7-1Mb">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="money.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="RnR-Yf-4Tm"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="PCS-x3-Ptd"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-IX-zbA">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-Hb-vkK">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="pig.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="dwN-vi-g4E"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMR-xk-aiw">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="pizza.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="Q4t-Wd-jvF"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq0-Ab-JVu">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="redAngry.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="C4n-RB-mQe"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="CYf-vU-o6l"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MKb-l2-Dgh">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ne-Y8-Vrl">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="roses.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="GRe-Ys-Ktb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iot-fv-dGe">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="shootingPoo.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="ELX-xw-iaX"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcs-9O-itD">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="sleepy.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="MQb-qM-iK2"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="KRO-Uj-Rub"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vef-aj-o9j">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTU-eB-IFM">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="unicorn.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="LhJ-k5-F95"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLo-mQ-NmB">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="strong.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="WAE-67-Qam"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0W7-Gu-MDm">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="sunglasses.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="mkD-0c-gib"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="OMA-s6-W7H"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Y3-PY-SDA">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paQ-re-az0">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="taco.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="XPt-G2-PvS"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4F2-7C-bnL">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="turdle.png"/>
+                                                                <connections>
+                                                                    <action selector="pooSelectedButton:" destination="t4h-GH-LtE" eventType="touchUpInside" id="vtq-n6-f1Y"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3Q-tO-HBD">
+                                                                <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <state key="normal" image="wine.png"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="u0O-vN-rBJ"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="936" id="Q4g-IW-Tmr"/>
+                                            <constraint firstItem="xvw-DK-BmW" firstAttribute="leading" secondItem="Qzr-r1-dgR" secondAttribute="leading" id="Xvm-dP-4k7"/>
+                                            <constraint firstItem="xvw-DK-BmW" firstAttribute="top" secondItem="Qzr-r1-dgR" secondAttribute="top" id="YDT-Lt-gSY"/>
+                                            <constraint firstItem="xvw-DK-BmW" firstAttribute="centerX" secondItem="Qzr-r1-dgR" secondAttribute="centerX" id="bx6-jl-qSv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="936" id="1d7-Bm-JYH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qzr-r1-dgR" secondAttribute="bottom" id="egD-eR-pxo"/>
+                                    <constraint firstItem="Qzr-r1-dgR" firstAttribute="top" secondItem="hmY-bD-w7r" secondAttribute="top" id="o7H-Dg-5NQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qzr-r1-dgR" secondAttribute="trailing" id="pad-gR-csH"/>
+                                    <constraint firstItem="Qzr-r1-dgR" firstAttribute="leading" secondItem="hmY-bD-w7r" secondAttribute="leading" id="vtv-jA-78k"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hmY-bD-w7r" firstAttribute="leading" secondItem="wN6-bM-QmJ" secondAttribute="leading" id="Slq-CG-nlk"/>
+                            <constraint firstItem="5gl-il-DWB" firstAttribute="top" secondItem="hmY-bD-w7r" secondAttribute="bottom" id="baV-sw-Uln"/>
+                            <constraint firstItem="hmY-bD-w7r" firstAttribute="top" secondItem="LHd-T5-Zb3" secondAttribute="bottom" id="edX-KS-gRS"/>
+                            <constraint firstAttribute="trailing" secondItem="hmY-bD-w7r" secondAttribute="trailing" id="kK9-0O-oI5"/>
+                            <constraint firstItem="Qzr-r1-dgR" firstAttribute="width" secondItem="wN6-bM-QmJ" secondAttribute="width" id="lDt-Nq-W5n"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7Bs-x3-f36"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <segue destination="9fk-JD-VPv" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="OeE-hm-V49"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNY-eX-0dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9fk-JD-VPv" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1904.8" y="988.60569715142435"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="bZj-x1-hZ3">
+            <objects>
+                <viewController id="IcM-9E-5PI" customClass="LoginViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uBb-P5-Bp0"/>
+                        <viewControllerLayoutGuide type="bottom" id="efx-h1-qpx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Tg-wD-b51">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj7-gH-Rab">
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="loginButton:" destination="IcM-9E-5PI" eventType="touchUpInside" id="6fv-I5-X8E"/>
+                                    <segue destination="XPP-eE-7AA" kind="show" id="9H7-Jq-FTv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mark" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Avn-vu-xkC">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8q3-wq-9Qk">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-W2-4rQ">
+                                <frame key="frameInset" minX="124" minY="391" width="126" height="30"/>
+                                <state key="normal" title="Switch to Sign Up"/>
+                                <connections>
+                                    <action selector="switchButton:" destination="IcM-9E-5PI" eventType="touchUpInside" id="bTw-mz-Pwn"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="coA-C1-ie7">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zj7-gH-Rab" firstAttribute="centerY" secondItem="5Tg-wD-b51" secondAttribute="centerY" id="9dn-f9-RgQ"/>
+                            <constraint firstItem="Avn-vu-xkC" firstAttribute="leading" secondItem="5Tg-wD-b51" secondAttribute="leadingMargin" id="BfB-oe-IvJ"/>
+                            <constraint firstItem="coA-C1-ie7" firstAttribute="leading" secondItem="5Tg-wD-b51" secondAttribute="leadingMargin" id="BiV-8n-7sZ"/>
+                            <constraint firstItem="coA-C1-ie7" firstAttribute="trailing" secondItem="5Tg-wD-b51" secondAttribute="trailingMargin" id="LFn-xG-GuA"/>
+                            <constraint firstItem="Tmm-W2-4rQ" firstAttribute="centerX" secondItem="5Tg-wD-b51" secondAttribute="centerX" id="NDo-Jx-A9I"/>
+                            <constraint firstItem="zj7-gH-Rab" firstAttribute="centerX" secondItem="5Tg-wD-b51" secondAttribute="centerX" id="NlR-jT-cFA"/>
+                            <constraint firstItem="Avn-vu-xkC" firstAttribute="top" secondItem="uBb-P5-Bp0" secondAttribute="bottom" constant="25" id="Qa4-VG-z7V"/>
+                            <constraint firstItem="Avn-vu-xkC" firstAttribute="trailing" secondItem="5Tg-wD-b51" secondAttribute="trailingMargin" id="ecV-F1-y6R"/>
+                            <constraint firstItem="Tmm-W2-4rQ" firstAttribute="top" secondItem="zj7-gH-Rab" secondAttribute="bottom" constant="43" id="fZf-xD-nZy"/>
+                            <constraint firstItem="coA-C1-ie7" firstAttribute="top" secondItem="8q3-wq-9Qk" secondAttribute="bottom" constant="31" id="l2E-dB-mYQ"/>
+                            <constraint firstItem="8q3-wq-9Qk" firstAttribute="trailing" secondItem="5Tg-wD-b51" secondAttribute="trailingMargin" id="oNh-eH-EKn"/>
+                            <constraint firstItem="8q3-wq-9Qk" firstAttribute="top" secondItem="Avn-vu-xkC" secondAttribute="bottom" constant="39" id="wLs-TZ-Lje"/>
+                            <constraint firstItem="8q3-wq-9Qk" firstAttribute="leading" secondItem="5Tg-wD-b51" secondAttribute="leadingMargin" id="yBP-lZ-uiM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="coA-C1-ie7" id="5Y6-2u-vQg"/>
+                        <outlet property="loginOrSignUpButton" destination="zj7-gH-Rab" id="nAA-IF-1w5"/>
+                        <outlet property="passwordTextField" destination="8q3-wq-9Qk" id="5cF-Ex-HTF"/>
+                        <outlet property="switchButton" destination="Tmm-W2-4rQ" id="wUT-el-qXS"/>
+                        <outlet property="usernameTextField" destination="Avn-vu-xkC" id="PFH-Dn-5iU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tef-D6-NBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-847.20000000000005" y="69.715142428785612"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="saP-FS-oMg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XPP-eE-7AA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="umQ-2G-lfh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gw7-Y3-WSp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDY-s4-hLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="110" y="68"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="100.png" width="80" height="80"/>
+        <image name="basic.png" width="80" height="80"/>
+        <image name="basketball.png" width="80" height="80"/>
+        <image name="beer.png" width="80" height="80"/>
+        <image name="birthday.png" width="80" height="80"/>
+        <image name="coffee.png" width="80" height="80"/>
+        <image name="corn.png" width="80" height="80"/>
+        <image name="cry.png" width="80" height="80"/>
+        <image name="fat.png" width="80" height="80"/>
+        <image name="fire.png" width="80" height="80"/>
+        <image name="gay.png" width="80" height="80"/>
+        <image name="girl.png" width="80" height="80"/>
+        <image name="goblin.png" width="80" height="80"/>
+        <image name="grin.png" width="80" height="80"/>
+        <image name="hornsAngry.png" width="80" height="80"/>
+        <image name="iceCream.png" width="80" height="80"/>
+        <image name="kiss.png" width="80" height="80"/>
+        <image name="money.png" width="80" height="80"/>
+        <image name="pig.png" width="80" height="80"/>
+        <image name="pizza.png" width="80" height="80"/>
+        <image name="redAngry.png" width="80" height="80"/>
+        <image name="roses.png" width="80" height="80"/>
+        <image name="shootingPoo.png" width="80" height="80"/>
+        <image name="sleepy.png" width="80" height="80"/>
+        <image name="strong.png" width="80" height="80"/>
+        <image name="sunglasses.png" width="80" height="80"/>
+        <image name="taco.png" width="80" height="80"/>
+        <image name="toilet copy.png" width="1000" height="1173"/>
+        <image name="turdle.png" width="80" height="80"/>
+        <image name="unicorn.png" width="80" height="80"/>
+        <image name="wine.png" width="80" height="80"/>
+    </resources>
+</document>
