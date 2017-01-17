@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import GoogleMaps
+
 
 
 class LoginViewController: UIViewController {
@@ -46,7 +48,45 @@ class LoginViewController: UIViewController {
                         }
                     })
                 }
+                    
                 
+                
+            } else {
+                
+                // Login mode
+                
+                PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!, block: { (user, error) in
+                    
+// spinner?         self.activityIndicator.stopAnimating()
+                    
+                    UIApplication.shared.endIgnoringInteractionEvents() // UIApplication.shared() is now UIApplication.shared
+                    
+                    
+                    if error != nil {
+                        
+                        var displayErrorMessage = "Please try again later."
+                        
+                        let error = error as NSError?
+                        
+                        if let errorMessage = error?.userInfo["error"] as? String {
+                            
+                            displayErrorMessage = errorMessage
+                            
+                        }
+                        
+                        self.displayAlert(title: "Login Error", message: displayErrorMessage)
+                        
+                        
+                    } else {
+                        
+                        print("Logged in")
+                        
+//                        self.performSegue(withIdentifier: "showUserTable", sender: self)
+                        
+                    }
+                    
+                    
+                })
             }
         }
        
@@ -73,6 +113,8 @@ class LoginViewController: UIViewController {
     
         
     }
+    
+
 
     
     

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/MapViewController.swift"
-            timestampString = "505543451.631229"
+            timestampString = "506142475.750694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "MapViewController"
             landmarkType = "3">
             <Locations>
@@ -22,15 +22,30 @@
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+                  symbolName = "ParseStarterProject_Swift.MapViewController.manager.getter : __ObjC.CLLocationManager"
+                  moduleName = "ParseStarterProject-Swift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseGMap/ParseStarterProject/MapViewController.swift"
+                  timestampString = "506137042.883639"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
                   symbolName = "ParseStarterProject_Swift.MapViewController.manager.setter : __ObjC.CLLocationManager"
                   moduleName = "ParseStarterProject-Swift"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseServerStarterProject/ParseStarterProject/MapViewController.swift"
-                  timestampString = "505435803.603936"
+                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseGMap/ParseStarterProject/MapViewController.swift"
+                  timestampString = "506137042.886737"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
                   offsetFromSymbolStart = "65">
                </Location>
                <Location
@@ -40,13 +55,13 @@
                   symbolName = "ParseStarterProject_Swift.MapViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ParseStarterProject_Swift.MapViewController"
                   moduleName = "ParseStarterProject-Swift"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseServerStarterProject/ParseStarterProject/MapViewController.swift"
-                  timestampString = "505435803.606493"
+                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseGMap/ParseStarterProject/MapViewController.swift"
+                  timestampString = "506137042.890371"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "256">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "244">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -55,13 +70,13 @@
                   symbolName = "ParseStarterProject_Swift.MapViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;ParseStarterProject_Swift.MapViewController&gt;"
                   moduleName = "ParseStarterProject-Swift"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseServerStarterProject/ParseStarterProject/MapViewController.swift"
-                  timestampString = "505435803.608228"
+                  urlString = "file:///Users/MarkMoeller/Desktop/Parse/ParseGMap/ParseStarterProject/MapViewController.swift"
+                  timestampString = "506137042.893234"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
-                  offsetFromSymbolStart = "176">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "170">
                </Location>
             </Locations>
          </BreakpointContent>

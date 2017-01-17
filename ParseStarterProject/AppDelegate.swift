@@ -10,6 +10,8 @@
 import UIKit
 
 import Parse
+import GoogleMaps
+
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -18,6 +20,9 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var apiKey = "AIzaSyAAQRiNeSiIh7t-15jgOVnhsW6GJpUXVkA"
+    
+    
 
     //--------------------------------------
     // MARK: - UIApplicationDelegate
@@ -26,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
+        
+        GMSServices.provideAPIKey(apiKey)
+        
+        
+        
         Parse.enableLocalDatastore()
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in

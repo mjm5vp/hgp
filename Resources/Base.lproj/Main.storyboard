@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-9E-5PI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-9E-5PI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +22,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxx-Nc-yIt">
-                                <frame key="frameInset" minX="154" minY="140" width="67" height="30"/>
+                                <rect key="frame" x="154" y="140" width="67" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Map"/>
                                 <connections>
                                     <segue destination="IEd-Zz-aYg" kind="show" id="hA5-Ym-Hkf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqy-6p-OTq">
+                                <rect key="frame" x="67" y="314" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -48,19 +55,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3U-Zr-0rZ">
-                                <connections>
-                                    <outlet property="delegate" destination="IEd-Zz-aYg" id="guK-DK-eGg"/>
-                                </connections>
-                            </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="25" placeholderIntrinsicHeight="25" image="basic.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifV-0c-p5r">
-                                <frame key="frameInset" minX="175" minY="375" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="0kT-5q-4cM"/>
-                                    <constraint firstAttribute="height" constant="25" id="EKt-wa-mlL"/>
-                                </constraints>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPz-H3-fAY" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Szb-BY-WnO">
+                                <rect key="frame" x="295" y="587" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="2ev-zK-gGh"/>
                                     <constraint firstAttribute="height" constant="80" id="Ebh-jf-bgw"/>
@@ -72,16 +72,23 @@
                                     <action selector="toiletFlush:" destination="IEd-Zz-aYg" eventType="touchUpInside" id="oCn-dO-wa6"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="25" placeholderIntrinsicHeight="25" image="basic.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifV-0c-p5r">
+                                <rect key="frame" x="175" y="321" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="0kT-5q-4cM"/>
+                                    <constraint firstAttribute="height" constant="25" id="EKt-wa-mlL"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="E3U-Zr-0rZ" firstAttribute="leading" secondItem="t0z-fN-3w9" secondAttribute="leading" id="2QU-89-3Lv"/>
+                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerX" secondItem="SPz-H3-fAY" secondAttribute="centerX" id="4Uj-Az-ZUO"/>
                             <constraint firstAttribute="trailing" secondItem="Szb-BY-WnO" secondAttribute="trailing" id="4hV-L5-xzy"/>
-                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerX" secondItem="E3U-Zr-0rZ" secondAttribute="centerX" id="5Ld-pk-SmU"/>
-                            <constraint firstAttribute="bottom" secondItem="E3U-Zr-0rZ" secondAttribute="bottom" id="OYU-zX-Sxp"/>
-                            <constraint firstAttribute="trailing" secondItem="E3U-Zr-0rZ" secondAttribute="trailing" id="Vny-D3-JFB"/>
-                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerY" secondItem="E3U-Zr-0rZ" secondAttribute="centerY" id="g7M-Qq-sJJ"/>
-                            <constraint firstItem="E3U-Zr-0rZ" firstAttribute="top" secondItem="rfn-IE-0ng" secondAttribute="bottom" id="iQS-RI-fNw"/>
+                            <constraint firstAttribute="trailing" secondItem="SPz-H3-fAY" secondAttribute="trailing" id="Azo-tG-hej"/>
+                            <constraint firstItem="SPz-H3-fAY" firstAttribute="top" secondItem="rfn-IE-0ng" secondAttribute="bottom" id="IoP-jH-fy8"/>
+                            <constraint firstItem="SPz-H3-fAY" firstAttribute="leading" secondItem="t0z-fN-3w9" secondAttribute="leading" id="kXT-EC-zWS"/>
+                            <constraint firstItem="ifV-0c-p5r" firstAttribute="centerY" secondItem="SPz-H3-fAY" secondAttribute="centerY" id="m6t-cG-ok7"/>
+                            <constraint firstItem="Adj-dX-Rqg" firstAttribute="top" secondItem="SPz-H3-fAY" secondAttribute="bottom" id="v7x-lh-Oy6"/>
                             <constraint firstAttribute="bottom" secondItem="Szb-BY-WnO" secondAttribute="bottom" id="wh5-Ds-D7A"/>
                         </constraints>
                     </view>
@@ -98,7 +105,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="E3U-Zr-0rZ" id="c9S-pC-4X0"/>
+                        <outlet property="mapView" destination="SPz-H3-fAY" id="PDU-0n-xvw"/>
                         <outlet property="pooPlacer" destination="ifV-0c-p5r" id="Ab1-Xs-Rq4"/>
                     </connections>
                 </viewController>
@@ -119,16 +126,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-bD-w7r">
+                                <rect key="frame" x="0.0" y="64" width="375" height="936"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qzr-r1-dgR">
                                         <rect key="frame" x="0.0" y="-64" width="375" height="1016"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xvw-DK-BmW">
-                                                <frame key="frameInset" minY="8" width="375" height="890"/>
+                                                <rect key="frame" x="0.0" y="8" width="375" height="890"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hwh-Ek-HxW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDc-bT-fUV">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="basic.png"/>
                                                                 <connections>
@@ -136,6 +146,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptx-Hm-LbO">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="100.png"/>
                                                                 <connections>
@@ -143,6 +154,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mu-Ow-4nM">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="basketball.png"/>
                                                                 <connections>
@@ -155,8 +167,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rrJ-o0-xLB">
+                                                        <rect key="frame" x="0.0" y="90" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AwG-zR-pyf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="beer.png"/>
                                                                 <connections>
@@ -164,6 +178,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0p0-oj-paj">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="birthday.png"/>
                                                                 <connections>
@@ -171,6 +186,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3P-7F-6Uc">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="coffee.png"/>
                                                                 <connections>
@@ -183,8 +199,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zqL-eV-saH">
+                                                        <rect key="frame" x="0.0" y="180" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1U-gU-E4b">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="corn.png"/>
                                                                 <connections>
@@ -192,6 +210,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlH-k7-dif">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="cry.png"/>
                                                                 <connections>
@@ -199,6 +218,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2n-IS-cEq">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="fat.png"/>
                                                                 <connections>
@@ -211,8 +231,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yzn-t1-9QW">
+                                                        <rect key="frame" x="0.0" y="270" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79a-dz-1Kf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="fire.png"/>
                                                                 <connections>
@@ -220,6 +242,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-9W-9px">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="gay.png"/>
                                                                 <connections>
@@ -227,6 +250,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-zQ-M4T">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="girl.png"/>
                                                                 <connections>
@@ -239,8 +263,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BHD-45-cSB">
+                                                        <rect key="frame" x="0.0" y="360" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-7T-JRf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="goblin.png"/>
                                                                 <connections>
@@ -248,6 +274,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b3-lH-Hbf">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="grin.png"/>
                                                                 <connections>
@@ -255,6 +282,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDt-Mj-iRl">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="hornsAngry.png"/>
                                                                 <connections>
@@ -267,8 +295,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-78-pFA">
+                                                        <rect key="frame" x="0.0" y="450" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMI-Ky-L1k">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="iceCream.png"/>
                                                                 <connections>
@@ -276,6 +306,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqM-MM-QZw">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="kiss.png"/>
                                                                 <connections>
@@ -283,6 +314,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rI8-f7-1Mb">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="money.png"/>
                                                                 <connections>
@@ -295,8 +327,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-IX-zbA">
+                                                        <rect key="frame" x="0.0" y="540" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-Hb-vkK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="pig.png"/>
                                                                 <connections>
@@ -304,6 +338,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMR-xk-aiw">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="pizza.png"/>
                                                                 <connections>
@@ -311,6 +346,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq0-Ab-JVu">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="redAngry.png"/>
                                                                 <connections>
@@ -323,8 +359,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MKb-l2-Dgh">
+                                                        <rect key="frame" x="0.0" y="630" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ne-Y8-Vrl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="roses.png"/>
                                                                 <connections>
@@ -332,6 +370,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iot-fv-dGe">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="shootingPoo.png"/>
                                                                 <connections>
@@ -339,6 +378,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcs-9O-itD">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="sleepy.png"/>
                                                                 <connections>
@@ -351,8 +391,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vef-aj-o9j">
+                                                        <rect key="frame" x="0.0" y="720" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTU-eB-IFM">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="unicorn.png"/>
                                                                 <connections>
@@ -360,6 +402,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLo-mQ-NmB">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="strong.png"/>
                                                                 <connections>
@@ -367,6 +410,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0W7-Gu-MDm">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="sunglasses.png"/>
                                                                 <connections>
@@ -379,8 +423,10 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Y3-PY-SDA">
+                                                        <rect key="frame" x="0.0" y="810" width="375" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paQ-re-az0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="taco.png"/>
                                                                 <connections>
@@ -388,6 +434,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4F2-7C-bnL">
+                                                                <rect key="frame" x="128.5" y="0.0" width="118" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="turdle.png"/>
                                                                 <connections>
@@ -395,6 +442,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3Q-tO-HBD">
+                                                                <rect key="frame" x="256.5" y="0.0" width="118.5" height="80"/>
                                                                 <color key="backgroundColor" red="0.86666097850000001" green="0.87915603799999997" blue="0.91044257200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <state key="normal" image="wine.png"/>
                                                             </button>
@@ -460,6 +508,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zj7-gH-Rab">
+                                <rect key="frame" x="167" y="319" width="42" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="loginButton:" destination="IcM-9E-5PI" eventType="touchUpInside" id="6fv-I5-X8E"/>
@@ -467,23 +516,26 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mark" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Avn-vu-xkC">
+                                <rect key="frame" x="16" y="45" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8q3-wq-9Qk">
+                                <rect key="frame" x="16" y="114" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmm-W2-4rQ">
-                                <frame key="frameInset" minX="124" minY="391" width="126" height="30"/>
+                                <rect key="frame" x="124" y="391" width="126" height="30"/>
                                 <state key="normal" title="Switch to Sign Up"/>
                                 <connections>
                                     <action selector="switchButton:" destination="IcM-9E-5PI" eventType="touchUpInside" id="bTw-mz-Pwn"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="coA-C1-ie7">
+                                <rect key="frame" x="16" y="175" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -523,7 +575,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XPP-eE-7AA" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="umQ-2G-lfh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="umQ-2G-lfh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

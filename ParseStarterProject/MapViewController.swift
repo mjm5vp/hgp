@@ -10,23 +10,32 @@ import UIKit
 import MapKit
 import CoreLocation
 import Parse
+import GoogleMaps
 
 
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
+class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate  {
     
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var pinAnnotationView:MKPinAnnotationView!
 
+    @IBOutlet weak var mapView: GMSMapView!
     @IBAction func toiletFlush(_ sender: AnyObject) {
         
-        userLocation = mapView.centerCoordinate
+        userLocation = mapView.camera.target
+        
+        
+        
         
         if userLocation.latitude != 0 && userLocation.longitude != 0 {
             let pooMarker = PFObject(className: "PooMarker")
+            let imageData = UIImagePNGRepresentation(currentPoo!)
+            let imageFile = PFFile(data: imageData!)
+            
         
-            pooMarker["username"] = PFUser.current()?.username
+            pooMarker["userid"] = PFUser.current()?.objectId!
             pooMarker["location"] = PFGeoPoint(latitude: userLocation.latitude, longitude: userLocation.longitude)
+            pooMarker["pooImage"] = imageFile
             pooMarker.saveInBackground(block: { (success, error) in
                 if success {
                     print ("Poo Saved")
@@ -41,13 +50,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
             }
         else {
-            self.displayAlert(title: "Failed to save", message: "Please try again")
+            self.displayAlert(title: "Location at zero", message: "Please try again")
         
         }
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = userLocation
-        pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "pin")
-        self.mapView.addAnnotation(pinAnnotationView.annotation!)
+        
+        let pooImage = GMSMarker(position: userLocation)
+    //    pooImage.position = userLocation
+    //    pooImage.icon = pooPlacer.image
+        pooImage.icon = self.imageWithImage(image: pooPlacer.image!, scaledToSize: CGSize(width: 25.0, height: 25.0))
+        pooImage.map = mapView
+  //      self.mapView.addAnnotation(pinAnnotationView.annotation!)
         /*
       var annotation = MKPointAnnotation()
         annotation.coordinate = userLocation
@@ -66,7 +78,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
 
-    @IBOutlet weak var mapView: MKMapView!
+ 
     @IBOutlet weak var pooPlacer: UIImageView!
     
 
@@ -76,6 +88,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -106,14 +120,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let userLocation = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+   //     print("location updated")
         
-        let region = MKCoordinateRegion(center: userLocation, span: span)
+   //     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         
-        self.mapView.setRegion(region, animated: true)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = false
+        
+        
+        let camera = GMSCameraPosition(target: userLocation, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        mapView.camera = camera
         
         manager.stopUpdatingLocation()
         
+    }
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        userLocation = position.target
     }
     
      func displayAlert(title: String, message: String){
@@ -125,18 +149,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func MapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        let annotationReuseId = "pin"
-        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationReuseId)
-        if anView == nil {
-            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseId)
-        } else {
-            anView?.annotation = annotation
-        }
-        anView?.image = UIImage(named: "basic.png")
-        anView?.canShowCallout = false
-        return anView
+    func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+        image.draw(in: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: newSize.width, height: newSize.height)))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
+    
+
 }
     
 
