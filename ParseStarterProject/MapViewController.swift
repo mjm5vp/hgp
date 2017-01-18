@@ -202,6 +202,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = false
+        mapView.mapType = kGMSTypeHybrid
         
         
         let camera = GMSCameraPosition(target: userLocation, zoom: 15, bearing: 0, viewingAngle: 0)
