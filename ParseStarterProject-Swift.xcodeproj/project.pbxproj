@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0700A8031E2ABDC7007A3DF5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0700A8021E2ABDC7007A3DF5 /* Podfile */; };
+		070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070288A21E2FF58300F33D9B /* PooBrain.swift */; };
 		077BAA381E1F3793004964CD /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA371E1F3793004964CD /* toilet.png */; };
 		077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA391E1F4510004964CD /* toilet copy.png */; };
 		077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		0700A8021E2ABDC7007A3DF5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		070288A21E2FF58300F33D9B /* PooBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PooBrain.swift; sourceTree = "<group>"; };
 		077BAA371E1F3793004964CD /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toilet.png; path = /Users/MarkMoeller/Downloads/toilet.png; sourceTree = "<absolute>"; };
 		077BAA391E1F4510004964CD /* toilet copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toilet copy.png"; path = "/Users/MarkMoeller/Downloads/toilet copy.png"; sourceTree = "<absolute>"; };
 		077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070288A41E2FF68D00F33D9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				070288A21E2FF58300F33D9B /* PooBrain.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		070288A51E2FF6B900F33D9B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				07C27D3A1E2DD8CD004231BF /* TableViewController.swift */,
+				07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */,
+				077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */,
+				0799E7AE1DA71DDF004D610E /* MapViewController.swift */,
+				077BAA3D1E21DE01004964CD /* LoginViewController.swift */,
+				07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		070288A61E2FF6E300F33D9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				814C3AC61B69877600E307BB /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		0799E7D01DA71EE2004D610E /* pooImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,12 +239,12 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				0700A8021E2ABDC7007A3DF5 /* Podfile */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
 				81BA81461A49DA1800E65899 /* Products */,
 				4D00F0BE82C97EA87A250D3D /* Pods */,
+				0700A8021E2ABDC7007A3DF5 /* Podfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,14 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				814C3AC61B69877600E307BB /* Main.storyboard */,
-				07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */,
-				07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */,
-				07C27D3A1E2DD8CD004231BF /* TableViewController.swift */,
-				077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */,
-				0799E7AE1DA71DDF004D610E /* MapViewController.swift */,
-				077BAA3D1E21DE01004964CD /* LoginViewController.swift */,
+				070288A51E2FF6B900F33D9B /* Controllers */,
+				070288A41E2FF68D00F33D9B /* Models */,
+				070288A61E2FF6E300F33D9B /* Views */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -427,6 +454,7 @@
 				0799E7AF1DA71DDF004D610E /* MapViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				077BAA3E1E21DE01004964CD /* LoginViewController.swift in Sources */,
+				070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */,
 				07C27D3F1E2FC9C6004231BF /* FlushViewController.swift in Sources */,
 				07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */,
 				077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */,

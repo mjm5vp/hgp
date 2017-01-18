@@ -8,7 +8,7 @@
 
 import UIKit
 
-var currentPoo = UIImage(named: "100.png")
+var currentPoo = UIImage(named: "basic.png")
 
 
 class SelectorViewController: UIViewController {
@@ -57,6 +57,8 @@ class SelectorViewController: UIViewController {
         let destViewController: MapViewController = segue.destination as! MapViewController
         
         destViewController.pooPlacer.image = currentPoo
+        destViewController.pooPlacer.isHidden = false
+        destViewController.toiletOutlet.isHidden = false
     }
     }
 

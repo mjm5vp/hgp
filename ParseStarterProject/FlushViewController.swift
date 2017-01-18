@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import GoogleMaps
+import CoreLocation
+
 
 class FlushViewController: UIViewController {
     
@@ -14,8 +17,34 @@ class FlushViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var pooImageField: UIImageView!
     
+    var brain = PooBrain()
+    
+    
+
+    
     @IBAction func flushButton(_ sender: Any) {
+//        let changeMapViewController: MapViewController = MapViewController(nibName: nil, bundle: nil)
+//        let mapView: GMSMapView = changeMapViewController.mapView
+        self.performSegue(withIdentifier: "unwindToMenu", sender: self)
         
+
+        
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "unwindToMenu" {
+            let destViewController: MapViewController = segue.destination as! MapViewController
+            
+            let mapView = destViewController.mapView
+
+            
+            brain.getLocation(mapView: mapView!)
+            brain.savePoo()
+        }
     }
     
     

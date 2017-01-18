@@ -30,8 +30,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
 
     @IBOutlet weak var mapView: GMSMapView!
-    @IBAction func toiletFlush(_ sender: AnyObject) {
-        
+    @IBOutlet weak var toiletOutlet: UIButton!
+    @IBAction func toiletFlush(_ sender: UIButton) {
+        /*
         userLocation = mapView.camera.target
         
         
@@ -80,6 +81,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         */
         
     */
+ */
         
     }
     
@@ -172,9 +174,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
       //  fillMap()
         
-//        pooPlacer.image = currentPoo
-        
-//        pooPlacer.isHidden = true
+        pooPlacer.image = currentPoo
+        pooPlacer.isHidden = true
+        toiletOutlet.isHidden = true
  
 
         

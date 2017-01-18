@@ -78,7 +78,7 @@
                                 <state key="normal" title="Button" image="toilet copy.png"/>
                                 <connections>
                                     <action selector="toiletFlush:" destination="IEd-Zz-aYg" eventType="touchUpInside" id="oCn-dO-wa6"/>
-                                    <segue destination="MiC-EU-7Of" kind="show" id="Gfi-LM-PMZ"/>
+                                    <segue destination="MiC-EU-7Of" kind="show" identifier="seg2" id="Gfi-LM-PMZ"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="25" placeholderIntrinsicHeight="25" image="basic.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifV-0c-p5r">
@@ -124,6 +124,7 @@
                     <connections>
                         <outlet property="mapView" destination="SPz-H3-fAY" id="PDU-0n-xvw"/>
                         <outlet property="pooPlacer" destination="ifV-0c-p5r" id="Ab1-Xs-Rq4"/>
+                        <outlet property="toiletOutlet" destination="Szb-BY-WnO" id="oHI-Iy-A64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rhy-xY-zUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,9 +186,11 @@
                         <outlet property="descriptionTextField" destination="ePC-rI-48v" id="HxG-Fp-IId"/>
                         <outlet property="locationTextField" destination="2YI-aU-Qs7" id="0VL-2A-fWB"/>
                         <outlet property="pooImageField" destination="ih5-3r-9Cq" id="PkA-iV-MGO"/>
+                        <segue destination="YOf-aS-Lxf" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="d2l-KG-ofg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaS-v5-KVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="YOf-aS-Lxf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2884" y="67.916041979010501"/>
         </scene>
