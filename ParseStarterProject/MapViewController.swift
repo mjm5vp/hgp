@@ -16,8 +16,18 @@ import GoogleMaps
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate  {
     
+    @IBAction func refresh(_ sender: UIButton) {
+        fillMap()
+    }
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var pinAnnotationView:MKPinAnnotationView!
+    
+    var pooImages = [PFFile]()
+    var coordinates = [CLLocationCoordinate2D]()
+    var markers = [GMSMarker]()
+
+    
+    
 
     @IBOutlet weak var mapView: GMSMapView!
     @IBAction func toiletFlush(_ sender: AnyObject) {
@@ -54,6 +64,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         }
         
+       
+    /*
         let pooImage = GMSMarker(position: userLocation)
     //    pooImage.position = userLocation
     //    pooImage.icon = pooPlacer.image
@@ -67,9 +79,71 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.mapView.addAnnotation(annotation)
         */
         
-
+    */
         
     }
+    
+    func fillMap(){
+        var i = 0
+        let query = PFQuery(className: "PooMarker")
+        
+        query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+        
+        query.findObjectsInBackground(block: { (objects, error) in
+            
+            if error != nil {
+                
+                print(error)
+                
+            } else if let users = objects {
+                
+                self.pooImages.removeAll()
+                self.coordinates.removeAll()
+                
+                for object in users {
+                    if let user = object as? PFObject {
+                        
+                        self.pooImages.append(user["pooImage"] as! PFFile)
+                        self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
+                        
+                            
+                        }
+                    }
+                }
+                
+                
+            })
+        if coordinates.count > 0 {
+            
+            for coordinate in coordinates {
+                let pooMarkerMap = GMSMarker(position: coordinate)
+                pooImages[i].getDataInBackground { (data, error) in
+                    if let imageData = data {
+                        if let pooImageIcon = UIImage(data: imageData){
+                            pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 25.0, height: 25.0))
+                        }
+                    }
+                
+                
+                 
+                    
+                   
+                }
+                markers.append(pooMarkerMap)
+                i += 1
+                
+                
+            
+            }
+            for marker in markers {
+                marker.map = mapView
+            }
+        
+        }
+        
+    }
+    
+    
     @IBAction func pooSelectorButton(_ sender: UIBarButtonItem) {
         
 
@@ -95,6 +169,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        
+      //  fillMap()
         
 //        pooPlacer.image = currentPoo
         
