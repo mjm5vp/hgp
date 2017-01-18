@@ -120,7 +120,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                 pooImages[i].getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let pooImageIcon = UIImage(data: imageData){
-                            pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 25.0, height: 25.0))
+                            pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 40.0, height: 40.0))
                         }
                     }
                 
