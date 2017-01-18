@@ -10,11 +10,20 @@
 import UIKit
 import Parse
 import GoogleMaps
+import CoreLocation
 
 
 
 class ViewController: UIViewController {
+    
+//    var brain = PooBrain()
+//    var mVC = MapViewController()
+    
 
+    @IBAction func viewMapButton(_ sender: UIButton) {
+    
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,6 +31,7 @@ class ViewController: UIViewController {
        
         
     }
+    
     
  
 

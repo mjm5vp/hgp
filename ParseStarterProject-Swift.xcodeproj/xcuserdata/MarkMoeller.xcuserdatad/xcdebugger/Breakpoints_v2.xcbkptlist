@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/MapViewController.swift"
-            timestampString = "506463080.975001"
+            timestampString = "506472595.950416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "MapViewController"
             landmarkType = "3">
             <Locations>

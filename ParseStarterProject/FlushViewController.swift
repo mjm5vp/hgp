@@ -52,6 +52,8 @@ class FlushViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pooImageField.image = currentPoo
 
         // Do any additional setup after loading the view.
     }

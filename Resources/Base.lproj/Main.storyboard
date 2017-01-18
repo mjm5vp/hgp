@@ -26,7 +26,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Map"/>
                                 <connections>
-                                    <segue destination="IEd-Zz-aYg" kind="show" id="hA5-Ym-Hkf"/>
+                                    <action selector="viewMapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BCT-mS-mG4"/>
+                                    <segue destination="IEd-Zz-aYg" kind="show" identifier="viewMapSeg" id="hA5-Ym-Hkf"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqy-6p-OTq">
