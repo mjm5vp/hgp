@@ -17,6 +17,9 @@ class FlushViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var pooImageField: UIImageView!
     
+
+    
+    
     var brain = PooBrain()
     
     
@@ -25,6 +28,8 @@ class FlushViewController: UIViewController {
     @IBAction func flushButton(_ sender: Any) {
 //        let changeMapViewController: MapViewController = MapViewController(nibName: nil, bundle: nil)
 //        let mapView: GMSMapView = changeMapViewController.mapView
+        
+        
         self.performSegue(withIdentifier: "unwindToMenu", sender: self)
         
 
@@ -40,10 +45,12 @@ class FlushViewController: UIViewController {
             let destViewController: MapViewController = segue.destination as! MapViewController
             
             let mapView = destViewController.mapView
+            let locationText = locationTextField.text
+            let descriptionText = descriptionTextField.text
 
             
             brain.getLocation(mapView: mapView!)
-            brain.savePoo()
+            brain.savePoo(location: locationText!, description: descriptionText!)
         }
     }
     

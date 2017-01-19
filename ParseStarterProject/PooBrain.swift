@@ -19,7 +19,7 @@ class PooBrain{
     var coordinates = [CLLocationCoordinate2D]()
     var markers = [GMSMarker]()
     
- //   var mVC: MapViewController = MapViewController()
+//    var mVC = MapViewController()
     
     func getLocation(mapView: GMSMapView){
     userLocation = mapView.camera.target
@@ -27,7 +27,7 @@ class PooBrain{
     }
     
     
-    func savePoo(){
+    func savePoo(location: String, description: String){
         if userLocation.latitude != 0 && userLocation.longitude != 0 {
     
             let pooMarker = PFObject(className: "PooMarker")
@@ -37,6 +37,8 @@ class PooBrain{
             pooMarker["userid"] = PFUser.current()?.objectId!
             pooMarker["location"] = PFGeoPoint(latitude: userLocation.latitude, longitude: userLocation.longitude)
             pooMarker["pooImage"] = imageFile
+            pooMarker["locationDescription"] = location
+            pooMarker["descriptionDescription"] = description
     
             pooMarker.saveInBackground(block: { (success, error) in
                 if success {
