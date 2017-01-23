@@ -16,7 +16,10 @@ class PooBrain{
     
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var pooImages = [PFFile]()
+    var pooImagesUI = [UIImage]()
     var coordinates = [CLLocationCoordinate2D]()
+    var locations = [String]()
+    var descriptions = [String]()
     var markers = [GMSMarker]()
     
 //    var mVC = MapViewController()
@@ -58,7 +61,7 @@ class PooBrain{
         var i = 0
         let query = PFQuery(className: "PooMarker")
     
-        query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+        query.whereKey("userid", equalTo: (PFUser.current()!.objectId!))
     
         query.findObjectsInBackground(block: { (objects, error) in
     
@@ -70,13 +73,20 @@ class PooBrain{
     
                 self.pooImages.removeAll()
                 self.coordinates.removeAll()
+                self.locations.removeAll()
+                self.descriptions.removeAll()
+                self.pooImagesUI.removeAll()
+  //              self.markers.removeAll()
+                
     
                 for object in users {
                     if let user = object as? PFObject {
     
                         self.pooImages.append(user["pooImage"] as! PFFile)
                         self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-    
+                        self.locations.append(user["locationDescription"] as! String)
+                        self.descriptions.append(user["descriptionDescription"] as! String)
+                        
                     }
                 }
             }
@@ -85,13 +95,19 @@ class PooBrain{
     
             for coordinate in coordinates {
                 let pooMarkerMap = GMSMarker(position: coordinate)
+                pooMarkerMap.title = locations[i]
+                pooMarkerMap.snippet = descriptions[i]
+  //              pooMarkerMap.tracksInfoWindowChanges = true
                 pooImages[i].getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let pooImageIcon = UIImage(data: imageData){
                             pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 40.0, height: 40.0))
+                            self.pooImagesUI.append(pooMarkerMap.icon!)
                         }
+                        
                     }
                 }
+                
                 markers.append(pooMarkerMap)
                 i += 1
             }

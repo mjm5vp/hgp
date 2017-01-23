@@ -16,6 +16,11 @@ import GoogleMaps
 
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate  {
     
+ //   var infoWindow = CustomInfoView()
+ //   var activePoint : POIItem?
+    var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var brain = PooBrain()
+    
     @IBAction func refresh(_ sender: UIButton) {
         
         brain.getLocation(mapView: mapView)
@@ -26,13 +31,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
     //    fillMap()
     }
-    var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
+
+
   /*
     var pooImages = [PFFile]()
     var coordinates = [CLLocationCoordinate2D]()
     var markers = [GMSMarker]()
    */
-    var brain = PooBrain()
+    
 
     
     
@@ -127,7 +134,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         toiletOutlet.isHidden = true
         
 
- 
+        
 
         
 
@@ -164,15 +171,28 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         manager.stopUpdatingLocation()
         
     }
-    
-    func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
-        brain.getLocation(mapView: mapView)
-        brain.fillMap()
-        for marker in brain.markers {
-            marker.map = mapView
+/*
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        if let poiItem = marker as? POIItem {
+            // Remove previously opened window if any
+            if activePoint != nil {
+                infoWindow.removeFromSuperview()
+                activePoint = nil
+            }
+            // Load custom view from nib or create it manually
+            // loadFromNib here is a custom extension of CustomInfoView
+            infoWindow = CustomInfoView.loadFromNib()
+            // Button is here
+            infoWindow.testButton.addTarget(self, action: #selector(self.testButtonPressed), forControlEvents: .AllTouchEvents)
+            
+            infoWindow.center = mapView.projection.pointForCoordinate(poiItem.position)
+            activePoint = poiItem
+            self.view.addSubview(infoWindow)
         }
+        return false
     }
-    
+
+*/
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         userLocation = position.target
     }
@@ -185,7 +205,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         self.present(alertController, animated: true, completion: nil)
     }
-    
+/*
+    override func loadView() {
+        brain.getLocation(mapView: mapView)
+        brain.fillMap()
+        for marker in brain.markers {
+            marker.map = mapView
+        }
+    }
+*/
 
     
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0700A8031E2ABDC7007A3DF5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 0700A8021E2ABDC7007A3DF5 /* Podfile */; };
 		070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070288A21E2FF58300F33D9B /* PooBrain.swift */; };
-		077BAA381E1F3793004964CD /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA371E1F3793004964CD /* toilet.png */; };
 		077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA391E1F4510004964CD /* toilet copy.png */; };
 		077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */; };
 		077BAA3E1E21DE01004964CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3D1E21DE01004964CD /* LoginViewController.swift */; };
@@ -64,9 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0700A8021E2ABDC7007A3DF5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		0700A8021E2ABDC7007A3DF5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		070288A21E2FF58300F33D9B /* PooBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PooBrain.swift; sourceTree = "<group>"; };
-		077BAA371E1F3793004964CD /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toilet.png; path = /Users/MarkMoeller/Downloads/toilet.png; sourceTree = "<absolute>"; };
 		077BAA391E1F4510004964CD /* toilet copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toilet copy.png"; path = "/Users/MarkMoeller/Downloads/toilet copy.png"; sourceTree = "<absolute>"; };
 		077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
 		077BAA3D1E21DE01004964CD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				077BAA391E1F4510004964CD /* toilet copy.png */,
-				077BAA371E1F3793004964CD /* toilet.png */,
 				0799E7B01DA71EE2004D610E /* unicorn.png */,
 				0799E7B11DA71EE2004D610E /* wine.png */,
 				0799E7B21DA71EE2004D610E /* girl.png */,
@@ -389,7 +386,6 @@
 				0799E7D51DA71EE2004D610E /* redAngry.png in Resources */,
 				0799E7ED1DA71EE2004D610E /* kiss.png in Resources */,
 				0799E7D61DA71EE2004D610E /* birthday.png in Resources */,
-				077BAA381E1F3793004964CD /* toilet.png in Resources */,
 				0799E7D41DA71EE2004D610E /* beer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
