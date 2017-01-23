@@ -25,6 +25,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         brain.getLocation(mapView: mapView)
         brain.fillMap()
+        print (brain.markers.count)
         for marker in brain.markers {
             marker.map = mapView
         }
@@ -133,6 +134,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         pooPlacer.isHidden = true
         toiletOutlet.isHidden = true
         
+
 
         
 

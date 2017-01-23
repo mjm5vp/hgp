@@ -60,27 +60,35 @@ class PooBrain{
     func fillMap(){
         var i = 0
         let query = PFQuery(className: "PooMarker")
+        print(query)
     
-        query.whereKey("userid", equalTo: (PFUser.current()!.objectId!))
+        query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+        
     
         query.findObjectsInBackground(block: { (objects, error) in
     
-            if error != nil {
+     //       if error != nil {
     
-                print(error)
+     //           print(error)
     
-            } else if let users = objects {
+     //       } else if let users = objects {
+            if let users = objects {
+                
+                print("if let users")
+                
     
                 self.pooImages.removeAll()
                 self.coordinates.removeAll()
                 self.locations.removeAll()
                 self.descriptions.removeAll()
                 self.pooImagesUI.removeAll()
-  //              self.markers.removeAll()
+                self.markers.removeAll()
                 
     
                 for object in users {
+                    print ("for object in users")
                     if let user = object as? PFObject {
+                        print ("if let user")
     
                         self.pooImages.append(user["pooImage"] as! PFFile)
                         self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
@@ -114,8 +122,11 @@ class PooBrain{
 
     
         }
+        
+        print ("coordinates count \(coordinates.count)")
     
     }
+
     
     
  

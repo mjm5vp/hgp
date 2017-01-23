@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import Parse
+import GoogleMaps
+
 
 class TableViewController: UITableViewController {
     
     var brain = PooBrain()
+ //   var markersCount = 0
+    
     
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        brain.fillMap()
+        brain.fillMap()
+        print(brain.markers.count)
+//        markersCount = brain.markers.count
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,15 +52,20 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return brain.coordinates.count
+ //       brain.printNumber()
+        
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
-        cell.pooImage.image = brain.pooImagesUI[indexPath.row]
-        cell.descriptionLabel.text = brain.descriptions[indexPath.row]
+ //       cell.pooImage.image = brain.pooImagesUI[indexPath.row]
+ //       cell.descriptionLabel.text = brain.descriptions[indexPath.row]
+        
+ //       print (cell.descriptionLabel.text)
+        
         
 
         // Configure the cell...
