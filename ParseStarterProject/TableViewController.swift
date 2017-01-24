@@ -16,7 +16,16 @@ import GoogleMaps
 class TableViewController: UITableViewController {
     
     var brain = PooBrain()
+ //   var MVC = MapViewController()
  //   var markersCount = 0
+    
+    var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var pooImages = [PFFile]()
+    var pooImagesUI = [UIImage]()
+    var coordinates = [CLLocationCoordinate2D]()
+    var locations = [String]()
+    var descriptions = [String]()
+    var markers = [GMSMarker]()
     
     
     
@@ -26,8 +35,8 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        brain.fillMap()
-        brain.fillMap()
+        brain.fillMapB()
+ //       brain.fillMap()
         print(brain.markers.count)
 //        markersCount = brain.markers.count
 
@@ -36,7 +45,60 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+        
+        
+           
+            let query = PFQuery(className: "PooMarker")
+            print(query)
+            
+            pooImages.removeAll()
+            coordinates.removeAll()
+            locations.removeAll()
+            descriptions.removeAll()
+            pooImagesUI.removeAll()
+            markers.removeAll()
+            
+            query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+            
+            
+            
+            
+            query.findObjectsInBackground(block: { (objects, error) in
+                
+                if error != nil {
+                    
+                    print("there was an error")
+                    
+                } else if let users = objects {
+                    if let users = objects {
+                        
+                        print("if let users")
+                        
+                        
+                        
+                        
+                        
+                        for object in users {
+                            print ("for object in users")
+                            if let user = object as? PFObject {
+                                print ("if let user")
+                                
+                                self.pooImages.append(user["pooImage"] as! PFFile)
+                                self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
+                                self.locations.append(user["locationDescription"] as! String)
+                                self.descriptions.append(user["descriptionDescription"] as! String)
+                                self.tableView.reloadData()
+                                
+                            }
+                        }
+                    }
+                    
+                }
+                //      return "location is \(locations[0])"
+            })
+        }
+        
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,16 +115,16 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
  //       brain.printNumber()
-        
-        return 1
+        print ("coordinates count: \(coordinates.count)")
+        return coordinates.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
- //       cell.pooImage.image = brain.pooImagesUI[indexPath.row]
- //       cell.descriptionLabel.text = brain.descriptions[indexPath.row]
+        cell.pooImage.image = pooImagesUI[indexPath.row]
+        cell.descriptionLabel.text = descriptions[indexPath.row]
         
  //       print (cell.descriptionLabel.text)
         

@@ -50,39 +50,45 @@ class PooBrain{
                     self.displayAlert(title: "Failed to save", message: "Please try again")
                 }
             })
+            print("After Poo Saved")
+            printStuff()
         }
         
         else {
-            self.displayAlert(title: "Location not working", message: "Please try again")
+            displayAlert(title: "Location not working", message: "Please try again")
         }
     }
  
-    func fillMap(){
-        var i = 0
+    func fillMap(mapView: GMSMapView, condition: String) {
+     //   var i = 0
         let query = PFQuery(className: "PooMarker")
         print(query)
+        
+        pooImages.removeAll()
+        coordinates.removeAll()
+        locations.removeAll()
+        descriptions.removeAll()
+        pooImagesUI.removeAll()
+        markers.removeAll()
     
         query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+        
+  
         
     
         query.findObjectsInBackground(block: { (objects, error) in
     
-     //       if error != nil {
+            if error != nil {
     
-     //           print(error)
+                print("there was an error")
     
-     //       } else if let users = objects {
-            if let users = objects {
+            } else if let users = objects {
+                if let users = objects {
                 
                 print("if let users")
                 
     
-                self.pooImages.removeAll()
-                self.coordinates.removeAll()
-                self.locations.removeAll()
-                self.descriptions.removeAll()
-                self.pooImagesUI.removeAll()
-                self.markers.removeAll()
+
                 
     
                 for object in users {
@@ -95,11 +101,26 @@ class PooBrain{
                         self.locations.append(user["locationDescription"] as! String)
                         self.descriptions.append(user["descriptionDescription"] as! String)
                         
+                        
                     }
                 }
             }
+                if condition == "a" {
+                    self.loopCoordinates()
+                    for marker in self.markers {
+                        marker.map = mapView
+                }
+                } else if condition == "b" {
+                    
+                }
+        }
+  //      return "location is \(locations[0])"
         })
+    }
+    func loopCoordinates(){
+        var i = 0
         if coordinates.count > 0 {
+            print("entered coordinates loop")
     
             for coordinate in coordinates {
                 let pooMarkerMap = GMSMarker(position: coordinate)
@@ -127,7 +148,8 @@ class PooBrain{
     
     }
 
-    
+
+
     
  
  
@@ -153,6 +175,63 @@ class PooBrain{
         UIGraphicsEndImageContext()
         return newImage
     }
-    
-    
+
+func printStuff(){
+    print ("func print stuff")
 }
+
+func fillMapB() {
+    //   var i = 0
+    let query = PFQuery(className: "PooMarker")
+    print(query)
+    
+    pooImages.removeAll()
+    coordinates.removeAll()
+    locations.removeAll()
+    descriptions.removeAll()
+    pooImagesUI.removeAll()
+    markers.removeAll()
+    
+    query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
+    
+    
+    
+    
+    query.findObjectsInBackground(block: { (objects, error) in
+        
+        if error != nil {
+            
+            print("there was an error")
+            
+        } else if let users = objects {
+            if let users = objects {
+                
+                print("if let users")
+                
+                
+                
+                
+                
+                for object in users {
+                    print ("for object in users")
+                    if let user = object as? PFObject {
+                        print ("if let user")
+                        
+                        self.pooImages.append(user["pooImage"] as! PFFile)
+                        self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
+                        self.locations.append(user["locationDescription"] as! String)
+                        self.descriptions.append(user["descriptionDescription"] as! String)
+                        
+                        
+                    }
+                }
+            }
+
+        }
+        //      return "location is \(locations[0])"
+    })
+}
+}
+
+
+

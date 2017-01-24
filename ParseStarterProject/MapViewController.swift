@@ -21,14 +21,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var brain = PooBrain()
     
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var toiletOutlet: UIButton!
+    @IBAction func toiletFlush(_ sender: UIButton) {
+    }
     @IBAction func refresh(_ sender: UIButton) {
         
-        brain.getLocation(mapView: mapView)
-        brain.fillMap()
+
+//        print("after fillMap before loopCoordinate")
+//        brain.loopCoordinates()
+//        printStuff()
         print (brain.markers.count)
-        for marker in brain.markers {
-            marker.map = mapView
-        }
+
         
     //    fillMap()
     }
@@ -45,12 +49,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     
 
-    @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var toiletOutlet: UIButton!
-    @IBAction func toiletFlush(_ sender: UIButton) {
- 
-        
-    }
+//    @IBOutlet weak var mapView: GMSMapView!
+//    @IBOutlet weak var toiletOutlet: UIButton!
+ //   @IBAction func toiletFlush(_ sender: UIButton)
    /*
     func fillMap(){
         var i = 0
@@ -133,6 +134,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         pooPlacer.image = currentPoo
         pooPlacer.isHidden = true
         toiletOutlet.isHidden = true
+        
+        brain.getLocation(mapView: mapView)
+        brain.fillMap(mapView: mapView, condition: "a")
         
 
 
