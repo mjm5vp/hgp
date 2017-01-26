@@ -231,6 +231,14 @@ func fillMapB() {
         //      return "location is \(locations[0])"
     })
 }
+    func formatDate(dateInput: NSDate) -> String{
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = .short
+    
+        let dateString = formatter.string(from: dateInput as Date)
+        return dateString
+    }
 }
 
 

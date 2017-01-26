@@ -26,6 +26,7 @@ class TableViewController: UITableViewController {
     var locations = [String]()
     var descriptions = [String]()
     var markers = [GMSMarker]()
+    var dates = [NSDate]()
     
     
     
@@ -46,8 +47,10 @@ class TableViewController: UITableViewController {
         descriptions.removeAll()
         pooImagesUI.removeAll()
         markers.removeAll()
+        dates.removeAll()
         
         query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
+        query.order(byDescending: "createdAt")
         
         do {
             
@@ -62,6 +65,7 @@ class TableViewController: UITableViewController {
                     self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
                     self.locations.append(user["locationDescription"] as! String)
                     self.descriptions.append(user["descriptionDescription"] as! String)
+                    self.dates.append(user.createdAt as! NSDate)
 
 
                     
@@ -188,6 +192,8 @@ class TableViewController: UITableViewController {
                     print("pooIMages in loop: \(self.pooImagesUI.count)")
                     cell.pooImage.image = self.pooImagesUI[indexPath.row]
                     cell.descriptionLabel.text = self.descriptions[indexPath.row]
+                    cell.dateLabel.text = self.brain.formatDate(dateInput: self.dates[indexPath.row])
+   //                 cell.dateLabel.text = String(describing: self.dates[indexPath.row])
                 }
                 
             }
