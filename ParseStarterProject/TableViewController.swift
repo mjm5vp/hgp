@@ -34,10 +34,55 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        brain.fillMapB()
         
-        brain.fillMapB()
+        
+        
+        let query = PFQuery(className: "PooMarker")
+        
+        pooImages.removeAll()
+        coordinates.removeAll()
+        locations.removeAll()
+        descriptions.removeAll()
+        pooImagesUI.removeAll()
+        markers.removeAll()
+        
+        query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
+        
+        do {
+            
+            let users = try query.findObjects()
+            print("users = try")
+            
+            if let users = users as? [PFObject] {
+                print("if let users")
+                for user in users {
+                    print("for user in users")
+                    self.pooImages.append(user["pooImage"] as! PFFile)
+                    self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
+                    self.locations.append(user["locationDescription"] as! String)
+                    self.descriptions.append(user["descriptionDescription"] as! String)
+
+
+                    
+                }
+                
+                self.tableView.reloadData()
+                
+            }
+            
+            
+        } catch {
+            
+            print ("Could not get users")
+            
+        }
+    }
+        
+        
+ //       brain.fillMapB()
  //       brain.fillMap()
-        print(brain.markers.count)
+ //       print(brain.markers.count)
 //        markersCount = brain.markers.count
 
         // Uncomment the following line to preserve selection between presentations
@@ -46,7 +91,7 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        
+        /*
            
             let query = PFQuery(className: "PooMarker")
             print(query)
@@ -83,10 +128,19 @@ class TableViewController: UITableViewController {
                             if let user = object as? PFObject {
                                 print ("if let user")
                                 
-                                self.pooImages.append(user["pooImage"] as! PFFile)
+                                let objectImage = user["pooImage"] as! PFFile
                                 self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
                                 self.locations.append(user["locationDescription"] as! String)
                                 self.descriptions.append(user["descriptionDescription"] as! String)
+                                objectImage.getDataInBackground { (data, error) in
+                                    if let imageData = data {
+                                        if let pooImageIcon = UIImage(data: imageData){
+                                            self.pooImagesUI.append(pooImageIcon)
+                                            print("pooIMages in loop: \(self.pooImagesUI.count)")
+                                        }
+                                        
+                                    }
+                                }
                                 self.tableView.reloadData()
                                 
                             }
@@ -97,6 +151,7 @@ class TableViewController: UITableViewController {
                 //      return "location is \(locations[0])"
             })
         }
+ */
         
     
 
@@ -123,8 +178,21 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
         
-        cell.pooImage.image = pooImagesUI[indexPath.row]
-        cell.descriptionLabel.text = descriptions[indexPath.row]
+        print ("Index Path \(indexPath.row)")
+        
+        print("Poo Images \(pooImagesUI.count)")
+        pooImages[indexPath.row].getDataInBackground { (data, error) in
+            if let imageData = data {
+                if let pooImageIcon = UIImage(data: imageData){
+                    self.pooImagesUI.append(pooImageIcon)
+                    print("pooIMages in loop: \(self.pooImagesUI.count)")
+                    cell.pooImage.image = self.pooImagesUI[indexPath.row]
+                    cell.descriptionLabel.text = self.descriptions[indexPath.row]
+                }
+                
+            }
+        }
+
         
  //       print (cell.descriptionLabel.text)
         
