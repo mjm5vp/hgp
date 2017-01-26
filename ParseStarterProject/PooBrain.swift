@@ -43,7 +43,14 @@ class PooBrain{
             pooMarker["pooImage"] = imageFile
             pooMarker["locationDescription"] = location
             pooMarker["descriptionDescription"] = description
-    
+            
+            do  {
+                try pooMarker.save()
+            }
+                catch {
+                    print("Failed to save")
+            }
+    /*
             pooMarker.saveInBackground(block: { (success, error) in
                 if success {
                     print ("Poo Saved")
@@ -51,6 +58,7 @@ class PooBrain{
                     self.displayAlert(title: "Failed to save", message: "Please try again")
                 }
             })
+            */
             print("After Poo Saved")
             printStuff()
         }
@@ -132,10 +140,11 @@ class PooBrain{
     }
     }
 
-
-
-    
- 
+    func placeMarkers(mapView: GMSMapView){
+        for marker in markers {
+            marker.map = mapView
+        }
+    }
  
     
     
@@ -164,57 +173,6 @@ func printStuff(){
     print ("func print stuff")
 }
 
-func fillMapB() {
-    //   var i = 0
-    let query = PFQuery(className: "PooMarker")
-    print(query)
-    
-    pooImages.removeAll()
-    coordinates.removeAll()
-    locations.removeAll()
-    descriptions.removeAll()
-    pooImagesUI.removeAll()
-    markers.removeAll()
-    
-    query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
-    
-    
-    
-    
-    query.findObjectsInBackground(block: { (objects, error) in
-        
-        if error != nil {
-            
-            print("there was an error")
-            
-        } else if let users = objects {
-            if let users = objects {
-                
-                print("if let users")
-                
-                
-                
-                
-                
-                for object in users {
-                    print ("for object in users")
-                    if let user = object as? PFObject {
-                        print ("if let user")
-                        
-                        self.pooImages.append(user["pooImage"] as! PFFile)
-                        self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-                        self.locations.append(user["locationDescription"] as! String)
-                        self.descriptions.append(user["descriptionDescription"] as! String)
-                        
-                        
-                    }
-                }
-            }
-
-        }
-        //      return "location is \(locations[0])"
-    })
-}
     func formatDate(dateInput: NSDate) -> String{
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short

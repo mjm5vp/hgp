@@ -51,6 +51,9 @@ class FlushViewController: UIViewController {
             
             brain.getLocation(mapView: mapView!)
             brain.savePoo(location: locationText!, description: descriptionText!)
+            brain.queryAndStore()
+            brain.loopCoordinates(mapView: mapView!)
+            brain.placeMarkers(mapView: mapView!)
         }
     }
     

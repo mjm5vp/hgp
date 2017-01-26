@@ -14,6 +14,7 @@ import GoogleMaps
 
 
 
+
 class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate  {
     
  //   var infoWindow = CustomInfoView()
@@ -49,6 +50,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        
+        mapView.clear()
 
         
         pooPlacer.image = currentPoo
@@ -58,14 +61,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         brain.getLocation(mapView: mapView)
         brain.queryAndStore()
         brain.loopCoordinates(mapView: mapView)
-        
-        for marker in brain.markers {
-            marker.map = mapView
-        }
+        brain.placeMarkers(mapView: mapView)
+
         
 
         // Do any additional setup after loading the view.
     }
+
     
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
 
@@ -118,6 +120,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 */
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         userLocation = position.target
+    }
+    
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        var infoWindow = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil)?.first! as! InfoWindowController
+        infoWindow.label.text = "\(marker.position.latitude) \(marker.position.longitude)"
+        return infoWindow
     }
     
      func displayAlert(title: String, message: String){
