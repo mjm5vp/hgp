@@ -20,110 +20,30 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
  //   var activePoint : POIItem?
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var brain = PooBrain()
+    var manager = CLLocationManager()
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var toiletOutlet: UIButton!
+    
     @IBAction func toiletFlush(_ sender: UIButton) {
+        
     }
     @IBAction func refresh(_ sender: UIButton) {
         
-
-//        print("after fillMap before loopCoordinate")
-//        brain.loopCoordinates()
-//        printStuff()
-        print (brain.markers.count)
-
-        
-    //    fillMap()
     }
-    
-
-
-  /*
-    var pooImages = [PFFile]()
-    var coordinates = [CLLocationCoordinate2D]()
-    var markers = [GMSMarker]()
-   */
-    
-
-    
-    
-
-//    @IBOutlet weak var mapView: GMSMapView!
-//    @IBOutlet weak var toiletOutlet: UIButton!
- //   @IBAction func toiletFlush(_ sender: UIButton)
-   /*
-    func fillMap(){
-        var i = 0
-        let query = PFQuery(className: "PooMarker")
-        
-        query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
-        
-        query.findObjectsInBackground(block: { (objects, error) in
-            
-            if error != nil {
-                
-                print(error)
-                
-            } else if let users = objects {
-                
-                self.pooImages.removeAll()
-                self.coordinates.removeAll()
-                
-                for object in users {
-                    if let user = object as? PFObject {
-                        
-                        self.pooImages.append(user["pooImage"] as! PFFile)
-                        self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-                        
-                        }
-                    }
-                }
-            })
-        if coordinates.count > 0 {
-            
-            for coordinate in coordinates {
-                let pooMarkerMap = GMSMarker(position: coordinate)
-                pooImages[i].getDataInBackground { (data, error) in
-                    if let imageData = data {
-                        if let pooImageIcon = UIImage(data: imageData){
-                            pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 40.0, height: 40.0))
-                        }
-                    }
-                }
-                markers.append(pooMarkerMap)
-                i += 1
-            }
-            for marker in markers {
-                marker.map = mapView
-            }
-        
-        }
-        
-    }
- */
-    
-    
     @IBAction func pooSelectorButton(_ sender: UIBarButtonItem) {
         
-
-        
     }
     
-    
-
- 
     @IBOutlet weak var pooPlacer: UIImageView!
     
 
  //   var currentPoo = UIImage(basic.png)
-    var manager = CLLocationManager()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -136,12 +56,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         toiletOutlet.isHidden = true
         
         brain.getLocation(mapView: mapView)
-        brain.fillMap(mapView: mapView, condition: "a")
+        brain.queryAndStore()
+        brain.loopCoordinates(mapView: mapView)
         
-
-
-        
-
+        for marker in brain.markers {
+            marker.map = mapView
+        }
         
 
         // Do any additional setup after loading the view.
@@ -160,10 +80,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let userLocation = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        
-   //     print("location updated")
-        
-   //     let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+
         
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = false
@@ -211,15 +128,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         self.present(alertController, animated: true, completion: nil)
     }
-/*
-    override func loadView() {
-        brain.getLocation(mapView: mapView)
-        brain.fillMap()
-        for marker in brain.markers {
-            marker.map = mapView
-        }
-    }
-*/
+
 
     
 

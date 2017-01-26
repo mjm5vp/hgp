@@ -21,6 +21,7 @@ class PooBrain{
     var locations = [String]()
     var descriptions = [String]()
     var markers = [GMSMarker]()
+    var dates = [NSDate]()
     
 //    var mVC = MapViewController()
     
@@ -58,94 +59,77 @@ class PooBrain{
             displayAlert(title: "Location not working", message: "Please try again")
         }
     }
- 
-    func fillMap(mapView: GMSMapView, condition: String) {
-     //   var i = 0
-        let query = PFQuery(className: "PooMarker")
-        print(query)
         
+    func queryAndStore(){
+    
+        let query = PFQuery(className: "PooMarker")
+    
         pooImages.removeAll()
         coordinates.removeAll()
         locations.removeAll()
         descriptions.removeAll()
         pooImagesUI.removeAll()
         markers.removeAll()
+        dates.removeAll()
     
-        query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
-        
-  
-        
-    
-        query.findObjectsInBackground(block: { (objects, error) in
-    
-            if error != nil {
-    
-                print("there was an error")
-    
-            } else if let users = objects {
-                if let users = objects {
-                
-                print("if let users")
-                
-    
+        query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
+        query.order(byDescending: "createdAt")
 
-                
     
-                for object in users {
-                    print ("for object in users")
-                    if let user = object as? PFObject {
-                        print ("if let user")
+        do {
     
-                        self.pooImages.append(user["pooImage"] as! PFFile)
-                        self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-                        self.locations.append(user["locationDescription"] as! String)
-                        self.descriptions.append(user["descriptionDescription"] as! String)
-                        
-                        
-                    }
+            let users = try query.findObjects()
+    
+            if let users = users as? [PFObject] {
+    
+                for user in users {
+    
+                    self.pooImages.append(user["pooImage"] as! PFFile)
+                    self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
+                    self.locations.append(user["locationDescription"] as! String)
+                    self.descriptions.append(user["descriptionDescription"] as! String)
+                    self.dates.append(user.createdAt as! NSDate)
+    
                 }
             }
-                if condition == "a" {
-                    self.loopCoordinates()
-                    for marker in self.markers {
-                        marker.map = mapView
-                }
-                } else if condition == "b" {
-                    
-                }
+        } catch {
+            print ("Could not get users")
         }
-  //      return "location is \(locations[0])"
-        })
     }
-    func loopCoordinates(){
+ 
+    func loopCoordinates(mapView: GMSMapView){
         var i = 0
         if coordinates.count > 0 {
-            print("entered coordinates loop")
     
             for coordinate in coordinates {
                 let pooMarkerMap = GMSMarker(position: coordinate)
                 pooMarkerMap.title = locations[i]
                 pooMarkerMap.snippet = descriptions[i]
-  //              pooMarkerMap.tracksInfoWindowChanges = true
+  //            pooMarkerMap.tracksInfoWindowChanges = true
                 pooImages[i].getDataInBackground { (data, error) in
                     if let imageData = data {
                         if let pooImageIcon = UIImage(data: imageData){
                             pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 40.0, height: 40.0))
                             self.pooImagesUI.append(pooMarkerMap.icon!)
+
+                            
                         }
                         
                     }
+
                 }
                 
-                markers.append(pooMarkerMap)
+                self.markers.append(pooMarkerMap)
                 i += 1
-            }
+                
+
 
     
         }
         
         print ("coordinates count \(coordinates.count)")
     
+    }
     }
 
 
@@ -239,6 +223,7 @@ func fillMapB() {
         let dateString = formatter.string(from: dateInput as Date)
         return dateString
     }
+    
 }
 
 

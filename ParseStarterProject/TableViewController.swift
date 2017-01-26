@@ -16,147 +16,26 @@ import GoogleMaps
 class TableViewController: UITableViewController {
     
     var brain = PooBrain()
- //   var MVC = MapViewController()
- //   var markersCount = 0
-    
-    var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-    var pooImages = [PFFile]()
-    var pooImagesUI = [UIImage]()
-    var coordinates = [CLLocationCoordinate2D]()
-    var locations = [String]()
-    var descriptions = [String]()
-    var markers = [GMSMarker]()
-    var dates = [NSDate]()
-    
-    
-    
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        brain.fillMapB()
+        brain.queryAndStore()
         
+        self.tableView.reloadData()
         
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let query = PFQuery(className: "PooMarker")
-        
-        pooImages.removeAll()
-        coordinates.removeAll()
-        locations.removeAll()
-        descriptions.removeAll()
-        pooImagesUI.removeAll()
-        markers.removeAll()
-        dates.removeAll()
-        
-        query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
-        query.order(byDescending: "createdAt")
-        
-        do {
-            
-            let users = try query.findObjects()
-            print("users = try")
-            
-            if let users = users as? [PFObject] {
-                print("if let users")
-                for user in users {
-                    print("for user in users")
-                    self.pooImages.append(user["pooImage"] as! PFFile)
-                    self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-                    self.locations.append(user["locationDescription"] as! String)
-                    self.descriptions.append(user["descriptionDescription"] as! String)
-                    self.dates.append(user.createdAt as! NSDate)
 
-
-                    
-                }
-                
-                self.tableView.reloadData()
-                
-            }
-            
-            
-        } catch {
-            
-            print ("Could not get users")
-            
-        }
     }
-        
-        
- //       brain.fillMapB()
- //       brain.fillMap()
- //       print(brain.markers.count)
-//        markersCount = brain.markers.count
-
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        /*
-           
-            let query = PFQuery(className: "PooMarker")
-            print(query)
-            
-            pooImages.removeAll()
-            coordinates.removeAll()
-            locations.removeAll()
-            descriptions.removeAll()
-            pooImagesUI.removeAll()
-            markers.removeAll()
-            
-            query.whereKey("userid", equalTo: (PFUser.current()?.objectId!)!)
-            
-            
-            
-            
-            query.findObjectsInBackground(block: { (objects, error) in
-                
-                if error != nil {
-                    
-                    print("there was an error")
-                    
-                } else if let users = objects {
-                    if let users = objects {
-                        
-                        print("if let users")
-                        
-                        
-                        
-                        
-                        
-                        for object in users {
-                            print ("for object in users")
-                            if let user = object as? PFObject {
-                                print ("if let user")
-                                
-                                let objectImage = user["pooImage"] as! PFFile
-                                self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
-                                self.locations.append(user["locationDescription"] as! String)
-                                self.descriptions.append(user["descriptionDescription"] as! String)
-                                objectImage.getDataInBackground { (data, error) in
-                                    if let imageData = data {
-                                        if let pooImageIcon = UIImage(data: imageData){
-                                            self.pooImagesUI.append(pooImageIcon)
-                                            print("pooIMages in loop: \(self.pooImagesUI.count)")
-                                        }
-                                        
-                                    }
-                                }
-                                self.tableView.reloadData()
-                                
-                            }
-                        }
-                    }
-                    
-                }
-                //      return "location is \(locations[0])"
-            })
-        }
- */
-        
+
     
 
     override func didReceiveMemoryWarning() {
@@ -173,9 +52,9 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
- //       brain.printNumber()
-        print ("coordinates count: \(coordinates.count)")
-        return coordinates.count
+
+
+        return brain.coordinates.count
     }
 
     
@@ -184,15 +63,15 @@ class TableViewController: UITableViewController {
         
         print ("Index Path \(indexPath.row)")
         
-        print("Poo Images \(pooImagesUI.count)")
-        pooImages[indexPath.row].getDataInBackground { (data, error) in
+        print("Poo Images \(brain.pooImagesUI.count)")
+        brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
             if let imageData = data {
                 if let pooImageIcon = UIImage(data: imageData){
-                    self.pooImagesUI.append(pooImageIcon)
-                    print("pooIMages in loop: \(self.pooImagesUI.count)")
-                    cell.pooImage.image = self.pooImagesUI[indexPath.row]
-                    cell.descriptionLabel.text = self.descriptions[indexPath.row]
-                    cell.dateLabel.text = self.brain.formatDate(dateInput: self.dates[indexPath.row])
+                    self.brain.pooImagesUI.append(pooImageIcon)
+                    print("pooIMages in loop: \(self.brain.pooImagesUI.count)")
+                    cell.pooImage.image = self.brain.pooImagesUI[indexPath.row]
+                    cell.descriptionLabel.text = self.brain.descriptions[indexPath.row]
+                    cell.dateLabel.text = self.brain.formatDate(dateInput: self.brain.dates[indexPath.row])
    //                 cell.dateLabel.text = String(describing: self.dates[indexPath.row])
                 }
                 
