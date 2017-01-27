@@ -52,6 +52,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         manager.startUpdatingLocation()
         
         mapView.clear()
+        self.mapView.delegate = self
 
         
         pooPlacer.image = currentPoo
@@ -121,12 +122,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         userLocation = position.target
     }
-    
-    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
-        var infoWindow = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil)?.first! as! InfoWindowController
-        infoWindow.label.text = "\(marker.position.latitude) \(marker.position.longitude)"
-        return infoWindow
+
+    func mapView(_ mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        // Get a reference for the custom overlay
+        let index:Int! = Int(marker.accessibilityLabel!)
+        let customInfoWindow = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil)?[0] as! InfoWindow
+        customInfoWindow.locationLabel.text = "test"
+//        customInfoWindow.imageLabel.image = UIImage(named: "100")
+        return customInfoWindow
     }
+    
+    func mapView(mapView: GMSMapView!, didTap marker: GMSMarker!) -> Bool {
+        print("user tapped")
+        return false
+    }
+ 
+
     
      func displayAlert(title: String, message: String){
         
@@ -136,6 +147,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         self.present(alertController, animated: true, completion: nil)
     }
+
 
 
     

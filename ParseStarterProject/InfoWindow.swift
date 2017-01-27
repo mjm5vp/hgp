@@ -9,8 +9,11 @@
 import Foundation
 import UIKit
 
-class InfoWindowController: UIView {
+class InfoWindow: UIView {
     
+    @IBOutlet weak var locationLabel: UILabel!
+
+    @IBOutlet weak var imageLabel: UIImageView!
     
     
     

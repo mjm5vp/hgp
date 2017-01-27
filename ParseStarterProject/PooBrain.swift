@@ -111,8 +111,8 @@ class PooBrain{
     
             for coordinate in coordinates {
                 let pooMarkerMap = GMSMarker(position: coordinate)
-                pooMarkerMap.title = locations[i]
-                pooMarkerMap.snippet = descriptions[i]
+   //             pooMarkerMap.title = locations[i]
+   //             pooMarkerMap.snippet = descriptions[i]
   //            pooMarkerMap.tracksInfoWindowChanges = true
                 pooImages[i].getDataInBackground { (data, error) in
                     if let imageData = data {
@@ -141,8 +141,12 @@ class PooBrain{
     }
 
     func placeMarkers(mapView: GMSMapView){
+        var i = 0
         for marker in markers {
             marker.map = mapView
+//            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
+            marker.accessibilityLabel = "\(i)"
+            i += 1
         }
     }
  

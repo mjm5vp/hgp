@@ -47,7 +47,7 @@
 		0799E7F01DA71EE2004D610E /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = 0799E7CF1DA71EE2004D610E /* 100.png */; };
 		0799E7F21DA722E5004D610E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799E7F11DA722E5004D610E /* CoreLocation.framework */; };
 		07A871FC1E3AA37900279E92 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A871FB1E3AA37900279E92 /* InfoWindow.xib */; };
-		07A872041E3AA81900279E92 /* InfoWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A872031E3AA81900279E92 /* InfoWindowController.swift */; };
+		07A872041E3AA81900279E92 /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A872031E3AA81900279E92 /* InfoWindow.swift */; };
 		07C27D3B1E2DD8CD004231BF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3A1E2DD8CD004231BF /* TableViewController.swift */; };
 		07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */; };
 		07C27D3F1E2FC9C6004231BF /* FlushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */; };
@@ -105,7 +105,7 @@
 		0799E7CF1DA71EE2004D610E /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
 		0799E7F11DA722E5004D610E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		07A871FB1E3AA37900279E92 /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
-		07A872031E3AA81900279E92 /* InfoWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWindowController.swift; sourceTree = "<group>"; };
+		07A872031E3AA81900279E92 /* InfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
 		07C27D3A1E2DD8CD004231BF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlushViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 				077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */,
 				0799E7AE1DA71DDF004D610E /* MapViewController.swift */,
 				07A871FB1E3AA37900279E92 /* InfoWindow.xib */,
-				07A872031E3AA81900279E92 /* InfoWindowController.swift */,
+				07A872031E3AA81900279E92 /* InfoWindow.swift */,
 				077BAA3D1E21DE01004964CD /* LoginViewController.swift */,
 				07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */,
 			);
@@ -457,7 +457,7 @@
 				0799E7AF1DA71DDF004D610E /* MapViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				077BAA3E1E21DE01004964CD /* LoginViewController.swift in Sources */,
-				07A872041E3AA81900279E92 /* InfoWindowController.swift in Sources */,
+				07A872041E3AA81900279E92 /* InfoWindow.swift in Sources */,
 				070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */,
 				07C27D3F1E2FC9C6004231BF /* FlushViewController.swift in Sources */,
 				07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */,
