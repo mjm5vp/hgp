@@ -11,9 +11,19 @@ import UIKit
 
 class InfoWindow: UIView {
     
+    let mVC = MapViewController()
+    
+    
     @IBOutlet weak var locationLabel: UILabel!
 
-    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var addButtonOutlet: UIButton!
+
+    @IBAction func addButton(_ sender: UIButton) {
+        
+        print("addButton pressed")
+ //       mVC.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+        
+    }
     
     
     

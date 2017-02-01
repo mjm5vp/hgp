@@ -11,6 +11,7 @@ import UIKit
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var pooImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     

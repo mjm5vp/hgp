@@ -14,34 +14,33 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OG-qi-pGe">
-                    <rect key="frame" x="-180" y="61" width="460" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="EQp-Ce-t81"/>
-                        <constraint firstAttribute="width" constant="460" id="ch8-Ag-CAJ"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OG-qi-pGe">
+                    <rect key="frame" x="0.0" y="16" width="100" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0W-B4-83A">
-                    <rect key="frame" x="-70" y="-14" width="240" height="128"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaX-AD-6lw">
+                    <rect key="frame" x="70" y="70" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="Ybm-Bx-QVF"/>
-                        <constraint firstAttribute="height" constant="128" id="rDi-o5-3lf"/>
+                        <constraint firstAttribute="height" constant="30" id="esZ-6X-RRu"/>
+                        <constraint firstAttribute="width" constant="30" id="usV-3R-Ynm"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" title="Add"/>
+                    <connections>
+                        <action selector="addButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="zZ4-S6-wGs"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="F0W-B4-83A" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UBl-ZX-ndP"/>
-                <constraint firstItem="8OG-qi-pGe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="di3-rE-BHx"/>
-                <constraint firstItem="8OG-qi-pGe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="61" id="fpm-Ag-8Sa"/>
-                <constraint firstItem="F0W-B4-83A" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pOe-Qb-RGN"/>
+                <constraint firstAttribute="trailing" secondItem="XaX-AD-6lw" secondAttribute="trailing" id="DCF-6r-4hx"/>
+                <constraint firstAttribute="bottom" secondItem="XaX-AD-6lw" secondAttribute="bottom" id="qze-2i-3L4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="imageLabel" destination="F0W-B4-83A" id="ncr-ER-4CF"/>
+                <outlet property="addButtonOutlet" destination="XaX-AD-6lw" id="BSG-6o-3PR"/>
                 <outlet property="locationLabel" destination="8OG-qi-pGe" id="D7f-hY-VeK"/>
             </connections>
         </view>

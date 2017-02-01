@@ -71,6 +71,7 @@ class TableViewController: UITableViewController {
                     print("pooIMages in loop: \(self.brain.pooImagesUI.count)")
                     cell.pooImage.image = self.brain.pooImagesUI[indexPath.row]
                     cell.descriptionLabel.text = self.brain.descriptions[indexPath.row]
+  //                  cell.locationLabel.text = self.brain.locations[indexPath.row]
                     cell.dateLabel.text = self.brain.formatDate(dateInput: self.brain.dates[indexPath.row])
    //                 cell.dateLabel.text = String(describing: self.dates[indexPath.row])
                 }
