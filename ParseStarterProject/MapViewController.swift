@@ -26,18 +26,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var toiletOutlet: UIButton!
     @IBOutlet weak var infoView: UIView!
-    @IBOutlet weak var locationViewLabel: UILabel!
+//    @IBOutlet weak var locationViewLabel: UILabel!
     
-    @IBOutlet weak var timeViewLabel: UILabel!
-    @IBOutlet weak var moreButton: UIButton!
+//    @IBOutlet weak var timeViewLabel: UILabel!
+//    @IBOutlet weak var moreButton: UIButton!
     
     
     @IBAction func toiletFlush(_ sender: UIButton) {
         
     }
-    @IBAction func refresh(_ sender: UIButton) {
-        
-    }
+    
     @IBAction func pooSelectorButton(_ sender: UIBarButtonItem) {
         
     }
@@ -47,7 +45,16 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 
  //   var currentPoo = UIImage(basic.png)
 
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBAction func addButton(_ sender: Any) {
+    }
     
+    @IBAction func editButton(_ sender: Any) {
+    }
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +65,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         manager.startUpdatingLocation()
         
         mapView.clear()
-        self.mapView.delegate = self
+        mapView.delegate = self
 
         
         pooPlacer.image = currentPoo
@@ -105,12 +112,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
     }
     
-
-    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("marker tapped")
+        infoView.isHidden = false
         return false
     }
+    
+
+    
+
 /*
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         if let poiItem = marker as? POIItem {
@@ -133,9 +142,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
 
 */
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        userLocation = position.target
-    }
+//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+//        userLocation = position.target
+//    }
 /*
     func mapView(_ mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         // Get a reference for the custom overlay
@@ -163,37 +172,41 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.present(alertController, animated: true, completion: nil)
     }
     
-    /*
+    
 // MARKER INFO WINDOW
     // initialize and keep a marker and a custom infowindow
-    var tappedMarker = GMSMarker()
-    var infoWindow = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil)?[0] as! InfoWindow
+//    var tappedMarker = GMSMarker()
+//    var infoWindow = Bundle.main.loadNibNamed("InfoWindow", owner: self, options: nil)?[0] as! InfoWindow
+//
     
     //empty the default infowindow
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        return UIView()
-    }
+//    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+//        return UIView()
+//    }
     
     // reset custom infowindow whenever marker is tapped
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        let location = CLLocationCoordinate2D(latitude: marker.position.latitude, longitude: marker.position.longitude)
-        let iW = InfoWindow()
+//    func mapView(mapView: GMSMapView, didTapMarker: GMSMarker) -> Bool {
         
-        tappedMarker = marker
-        infoWindow.removeFromSuperview()
+//        let infoWindow = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        print("tapped marker")
+//        let location = CLLocationCoordinate2D(latitude: marker.position.latitude, longitude: marker.position.longitude)
+//        let iW = InfoWindow()
+        
+//        tappedMarker = marker
+//        infoWindow.removeFromSuperview()
 //        infoWindow = mapMarkerInfoWindow(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
  //       infoWindow.Name.text = (marker.userData as! location).name
  //       infoWindow.Price.text = (marker.userData as! location).price.description
  //       infoWindow.Zone.text = (marker.userData as! location).zone.rawValue
-        infoWindow.center = mapView.projection.point(for: location)
-        infoWindow.addButton(iW.addButtonOutlet)
-        self.view.addSubview(infoWindow)
+ //       infoWindow.center = mapView.projection.point(for: location)
+ //       infoWindow.
+ //       self.mapView.addSubview(infoWindow)
         
         // Remember to return false
         // so marker event is still handled by delegate
-        return false
-    }
-    
+ //       return true
+//   }
+/*
     // let the custom infowindow follows the camera
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         if (tappedMarker.userData != nil){
@@ -201,21 +214,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             infoWindow.center = mapView.projection.point(for: location)
         }
     }
-    
+*/
     // take care of the close event
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        infoWindow.removeFromSuperview()
+        infoView.isHidden = true
+        print("tapped coordinate")
     }
- */
+ 
 
 
 
     
 
-}
+
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -223,6 +237,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
+}
 

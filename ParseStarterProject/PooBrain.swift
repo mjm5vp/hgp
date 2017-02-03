@@ -103,6 +103,7 @@ class PooBrain{
         } catch {
             print ("Could not get users")
         }
+        print("locations count: \(locations.count)")
     }
  
     func loopCoordinates(mapView: GMSMapView){
