@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-9E-5PI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IcM-9E-5PI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Log"/>
                                 <connections>
-                                    <segue destination="KVL-ON-4tw" kind="show" id="Hqm-Rw-WaM"/>
+                                    <segue destination="KVL-ON-4tw" kind="show" identifier="logSeg" id="Hqm-Rw-WaM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,34 +51,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="67.916041979010501"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="JVY-EM-AAd">
-            <objects>
-                <tableViewController id="8GT-el-uD4" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Jf-Gk-HOh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U9a-IM-JQ6">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U9a-IM-JQ6" id="f6H-vg-6lY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="8GT-el-uD4" id="VLT-4k-rIK"/>
-                            <outlet property="delegate" destination="8GT-el-uD4" id="tWr-Yd-meL"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P3T-U1-RSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1905" y="-737"/>
         </scene>
         <!--Map-->
         <scene sceneID="fv0-zW-7PK">
@@ -196,7 +168,6 @@
                                 <state key="normal" title="Button" image="toilet copy.png"/>
                                 <connections>
                                     <action selector="toiletFlush:" destination="IEd-Zz-aYg" eventType="touchUpInside" id="Txh-qd-25E"/>
-                                    <segue destination="MiC-EU-7Of" kind="show" identifier="seg2" id="Gfi-LM-PMZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -234,6 +205,9 @@
                         <outlet property="mapView" destination="SPz-H3-fAY" id="aZ8-RY-01W"/>
                         <outlet property="pooPlacer" destination="ifV-0c-p5r" id="Ab1-Xs-Rq4"/>
                         <outlet property="toiletOutlet" destination="Szb-BY-WnO" id="R86-r0-7Kd"/>
+                        <segue destination="t4h-GH-LtE" kind="show" identifier="addSeg" id="sUG-Kj-eaF"/>
+                        <segue destination="MiC-EU-7Of" kind="show" identifier="seg2" id="Ox6-cx-uXV"/>
+                        <segue destination="KVL-ON-4tw" kind="show" identifier="markTableSeg" id="BbO-gY-6kJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rhy-xY-zUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,6 +724,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <segue destination="9fk-JD-VPv" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="OeE-hm-V49"/>
+                        <segue destination="MiC-EU-7Of" kind="show" identifier="toFlush" id="8KK-Ed-dRW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNY-eX-0dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -884,4 +859,9 @@
         <image name="unicorn.png" width="80" height="80"/>
         <image name="wine.png" width="80" height="80"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ox6-cx-uXV"/>
+        <segue reference="Hqm-Rw-WaM"/>
+        <segue reference="rBm-nx-Rev"/>
+    </inferredMetricsTieBreakers>
 </document>

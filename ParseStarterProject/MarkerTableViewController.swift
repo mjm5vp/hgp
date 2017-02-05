@@ -1,43 +1,24 @@
 //
-//  TableViewController.swift
+//  MarkerTableViewController.swift
 //  ParseStarterProject-Swift
 //
-//  Created by Mark Moeller on 1/16/17.
+//  Created by Mark Moeller on 2/4/17.
 //  Copyright © 2017 Parse. All rights reserved.
 //
 
 import UIKit
-import MapKit
-import CoreLocation
-import Parse
-import GoogleMaps
 
-
-class TableViewController: UITableViewController {
-    
-    var brain = PooBrain()
-
-    
+class MarkerTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        brain.queryAndStore()
- //       brain.markerLocationList()
-        
-        self.tableView.reloadData()
-        
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
 
-    }
-    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-
-    
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,62 +34,18 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-
-        if markBool == false {
-            return brain.coordinates.count
-        }
-        else{
-            return markDescriptions.count
-        }
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        
-        print ("Index Path \(indexPath.row)")
-        
-        
-        if markBool == false {
-        brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
-            if let imageData = data {
-                if let pooImageIcon = UIImage(data: imageData){
-                    self.brain.pooImagesUI.append(pooImageIcon)
-                    cell.pooImage.image = self.brain.pooImagesUI[indexPath.row]
-                    cell.descriptionLabel.text = self.brain.descriptions[indexPath.row]
-                    cell.locationLabel.text = self.brain.locations[indexPath.row]
-                    cell.dateLabel.text = self.brain.formatDate(dateInput: self.brain.dates[indexPath.row])
-   //                 cell.dateLabel.text = String(describing: self.dates[indexPath.row])
-                }
-                
-            }
-        }
-        }else{
-            brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
-                if let imageData = data {
-                    if let pooImageIcon = UIImage(data: imageData){
-                        markPooImagesUI.append(pooImageIcon)
-                        print("pooIMages in loop: \(markPooImagesUI.count)")
-                        cell.pooImage.image = markPooImagesUI[indexPath.row]
-                        cell.descriptionLabel.text = markDescriptions[indexPath.row]
-                        cell.locationLabel.text = markLocations[indexPath.row]
-                        cell.dateLabel.text = self.brain.formatDate(dateInput: markDates[indexPath.row])
-            
-        }
-                }
-            }
-        }
-
-        
- //       print (cell.descriptionLabel.text)
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
 
         return cell
     }
- 
+    */
 
     /*
     // Override to support conditional editing of the table view.

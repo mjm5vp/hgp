@@ -13,6 +13,9 @@ var currentPoo = UIImage(named: "basic.png")
 
 class SelectorViewController: UIViewController {
     
+
+    var brain = PooBrain()
+    
     
 
     @IBAction func cancelButton(_ sender: AnyObject) {
@@ -41,25 +44,30 @@ class SelectorViewController: UIViewController {
         
      //   mapBackController.pooPlacer.image = currentPoo
       //  mapBackController.pooPlacer.isHidden = false
+        print("addBool = \(addBool)")
         
-        
-        
-       self.performSegue(withIdentifier: "unwindToMenu", sender: self)
-        
+        if addBool == true {
+            performSegue(withIdentifier: "toFlush", sender: self)
+        }else {
+            performSegue(withIdentifier: "unwindToMenu", sender: self)
+        }
     //    navigationController?.popViewController(animated: true)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    
-    if segue.identifier == "unwindToMenu" {
-        let destViewController: MapViewController = segue.destination as! MapViewController
         
-        destViewController.pooPlacer.image = currentPoo
-        destViewController.pooPlacer.isHidden = false
-        destViewController.toiletOutlet.isHidden = false
-    }
+    
+        if segue.identifier == "unwindToMenu" {
+            let destViewController: MapViewController = segue.destination as! MapViewController
+            
+            destViewController.pooPlacer.image = currentPoo
+            destViewController.pooPlacer.isHidden = false
+            destViewController.toiletOutlet.isHidden = false
+        }else if segue.identifier == "toFlush" {
+            
+        }
     }
 
 

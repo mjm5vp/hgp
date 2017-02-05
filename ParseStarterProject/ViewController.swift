@@ -16,7 +16,7 @@ import CoreLocation
 
 class ViewController: UIViewController {
     
-//    var brain = PooBrain()
+    var brain = PooBrain()
 //    var mVC = MapViewController()
     
 
@@ -38,5 +38,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        brain.queryAndStore()
+        if segue.identifier == "logSeg" {
+            markBool = false
+        }
     }
 }

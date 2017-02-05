@@ -33,6 +33,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     
     @IBAction func toiletFlush(_ sender: UIButton) {
+        performSegue(withIdentifier: "seg2", sender: self)
         
     }
     
@@ -49,16 +50,28 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBAction func addButton(_ sender: Any) {
+        
+        addBool = true
+        
+        
+        performSegue(withIdentifier: "addSeg", sender: self)
+        
+ //       self.navigationController?.pushViewController(SelectorViewController, animated: true)
+//        present(SelectorViewController, animated: true, completion: nil)
     }
     
     @IBAction func editButton(_ sender: Any) {
+        markBool = true
+        brain.queryAndStore()
+        brain.markerLocationList()
+        performSegue(withIdentifier: "markTableSeg", sender: self)
     }
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
@@ -67,12 +80,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         mapView.clear()
         mapView.delegate = self
 
-        
+
         pooPlacer.image = currentPoo
         pooPlacer.isHidden = true
         toiletOutlet.isHidden = true
-        infoView.isHidden = false
-        
+        infoView.isHidden = true
+ 
         brain.getLocation(mapView: mapView)
         brain.queryAndStore()
         brain.loopCoordinates(mapView: mapView)
@@ -81,6 +94,25 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+     /*
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        mapView.clear()
+        mapView.delegate = self
+        
+
+        pooPlacer.image = currentPoo
+        pooPlacer.isHidden = true
+        toiletOutlet.isHidden = true
+        infoView.isHidden = true
+   */
+
     }
 
     
@@ -114,6 +146,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         infoView.isHidden = false
+        brain.markerAccLabel = Int(marker.accessibilityLabel!)!
+        tapMarker = marker
         return false
     }
     
@@ -234,6 +268,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ //       let destViewController: SelectorViewController = segue.destination as! SelectorViewController
+        
+        if segue.identifier == "addSeg"{
+            addBool = true
+        }else if segue.identifier == "seg2" {
+            addBool = false
+        }else {
+            addBool = false
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

@@ -11,17 +11,37 @@ import CoreLocation
 import GoogleMaps
 import Parse
 
+var addBool = false
+var markBool = false
+var tapMarker = GMSMarker()
+
+var markPooImages = [PFFile]()
+var markPooImagesUI = [UIImage]()
+var markLocations = [String]()
+var markDescriptions = [String]()
+var markDates = [NSDate]()
+
+
+
+
 
 class PooBrain{
     
     var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var pooImages = [PFFile]()
-    var pooImagesUI = [UIImage]()
+
     var coordinates = [CLLocationCoordinate2D]()
     var locations = [String]()
     var descriptions = [String]()
     var markers = [GMSMarker]()
     var dates = [NSDate]()
+    var pooImagesUI = [UIImage]()
+    
+    
+    var markerAccLabel = 0
+    var dup = false
+    
+
     
 //    var mVC = MapViewController()
     
@@ -39,7 +59,12 @@ class PooBrain{
             let imageFile = PFFile(data: imageData!)
     
             pooMarker["userid"] = PFUser.current()?.objectId!
+            if addBool == false {
             pooMarker["location"] = PFGeoPoint(latitude: userLocation.latitude, longitude: userLocation.longitude)
+            }else if addBool == true {
+                print("tapmarker lat\(tapMarker.position.latitude)")
+                pooMarker["location"] = PFGeoPoint(latitude: tapMarker.position.latitude, longitude: tapMarker.position.longitude)
+            }
             pooMarker["pooImage"] = imageFile
             pooMarker["locationDescription"] = location
             pooMarker["descriptionDescription"] = description
@@ -50,17 +75,8 @@ class PooBrain{
                 catch {
                     print("Failed to save")
             }
-    /*
-            pooMarker.saveInBackground(block: { (success, error) in
-                if success {
-                    print ("Poo Saved")
-                } else {
-                    self.displayAlert(title: "Failed to save", message: "Please try again")
-                }
-            })
-            */
-            print("After Poo Saved")
-            printStuff()
+
+            print("current poo \(currentPoo)")
         }
         
         else {
@@ -76,7 +92,6 @@ class PooBrain{
         coordinates.removeAll()
         locations.removeAll()
         descriptions.removeAll()
-        pooImagesUI.removeAll()
         markers.removeAll()
         dates.removeAll()
     
@@ -108,6 +123,8 @@ class PooBrain{
  
     func loopCoordinates(mapView: GMSMapView){
         var i = 0
+        pooImagesUI.removeAll()
+        
         if coordinates.count > 0 {
     
             for coordinate in coordinates {
@@ -143,12 +160,15 @@ class PooBrain{
 
     func placeMarkers(mapView: GMSMapView){
         var i = 0
+        markers = removeDuplicates(values: markers)
         for marker in markers {
+            marker.accessibilityLabel = "\(i)"
             marker.map = mapView
 //            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
             marker.accessibilityLabel = "\(i)"
             i += 1
         }
+        print("markers = \(markers)")
     }
  
     
@@ -185,6 +205,67 @@ func printStuff(){
     
         let dateString = formatter.string(from: dateInput as Date)
         return dateString
+    }
+    
+    func removeDuplicates(values: [GMSMarker]) -> [GMSMarker] {
+        // Convert array into a set to get unique values.
+//        let uniques = Set<GMSMarker>(values)
+        var newArray = [GMSMarker]()
+
+        for value in values {
+            dup = false
+            for newElement in newArray {
+                if newElement.position.latitude == value.position.latitude {
+                    dup = true
+                }
+            }
+            if dup == false {
+            newArray.append(value)
+        }
+    }
+        
+        
+        return newArray
+    }
+    
+    func markerLocationList(){
+    
+        var compareLocation = CLLocationCoordinate2D(latitude: tapMarker.position.latitude, longitude: tapMarker.position.longitude)
+/*
+        var markPooImagesUI = [UIImage]()
+ //       var markCoordinates: [CL]
+        var markLocations = [String]()
+        var markDescriptions = [String]()
+        var markDates = [NSDate]()
+ 
+ */
+        var i = 0
+        
+        markPooImages.removeAll()
+        markPooImagesUI.removeAll()
+        markLocations.removeAll()
+        markDescriptions.removeAll()
+        markDates.removeAll()
+
+    
+        for coordinate in coordinates{
+            if coordinate.latitude == compareLocation.latitude {
+                
+                print("added")
+                print(pooImagesUI.count)
+                
+
+                markPooImagesUI.append(pooImagesUI[i])
+                markLocations.append(self.locations[i])
+                markDescriptions.append(self.descriptions[i])
+                markDates.append(self.dates[i])
+                
+                        }
+            
+            
+            i = i + 1
+            print(i)
+        }
     }
     
 }

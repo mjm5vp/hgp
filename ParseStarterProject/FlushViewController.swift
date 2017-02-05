@@ -51,11 +51,13 @@ class FlushViewController: UIViewController {
             let toiletOutlet = destViewController.toiletOutlet
 
             
+            destViewController.mapView.clear()
             brain.getLocation(mapView: mapView!)
             brain.savePoo(location: locationText!, description: descriptionText!)
             brain.queryAndStore()
             brain.loopCoordinates(mapView: mapView!)
             brain.placeMarkers(mapView: mapView!)
+  //          brain.markerLocationList()
             
             pooPlacer?.isHidden = true
             toiletOutlet?.isHidden = true
