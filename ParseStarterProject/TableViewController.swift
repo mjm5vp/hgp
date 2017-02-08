@@ -23,7 +23,9 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         brain.queryAndStore()
- //       brain.markerLocationList()
+ //       brain.loopCoordinates()
+ //       brain.convertMark
+        brain.markerLocationList()
         
         self.tableView.reloadData()
         
@@ -70,34 +72,35 @@ class TableViewController: UITableViewController {
         
         
         if markBool == false {
-        brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
-            if let imageData = data {
-                if let pooImageIcon = UIImage(data: imageData){
-                    self.brain.pooImagesUI.append(pooImageIcon)
-                    cell.pooImage.image = self.brain.pooImagesUI[indexPath.row]
+//        brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
+//            if let imageData = data {
+//                if let pooImageIcon = UIImage(data: imageData){
+//                    self.brain.pooImagesUI.append(pooImageIcon)
+            cell.pooImage.image = UIImage(named: brain.pooNames[indexPath.row])
                     cell.descriptionLabel.text = self.brain.descriptions[indexPath.row]
                     cell.locationLabel.text = self.brain.locations[indexPath.row]
                     cell.dateLabel.text = self.brain.formatDate(dateInput: self.brain.dates[indexPath.row])
    //                 cell.dateLabel.text = String(describing: self.dates[indexPath.row])
-                }
+            
                 
-            }
-        }
+        
+    
         }else{
-            brain.pooImages[indexPath.row].getDataInBackground { (data, error) in
-                if let imageData = data {
-                    if let pooImageIcon = UIImage(data: imageData){
-                        markPooImagesUI.append(pooImageIcon)
+//            markPooImages[indexPath.row].getDataInBackground { (data, error) in
+//                if let imageData = data {
+//                    if let pooImageIcon = UIImage(data: imageData){
+//                        markPooImagesUI.append(pooImageIcon)
                         print("pooIMages in loop: \(markPooImagesUI.count)")
-                        cell.pooImage.image = markPooImagesUI[indexPath.row]
+                        cell.pooImage.image = UIImage(named: markPooNames[indexPath.row])
                         cell.descriptionLabel.text = markDescriptions[indexPath.row]
                         cell.locationLabel.text = markLocations[indexPath.row]
                         cell.dateLabel.text = self.brain.formatDate(dateInput: markDates[indexPath.row])
             
         }
+                return cell
                 }
-            }
-        }
+    
+
 
         
  //       print (cell.descriptionLabel.text)
@@ -106,8 +109,8 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
 
-        return cell
-    }
+
+    
  
 
     /*

@@ -55,7 +55,7 @@ class FlushViewController: UIViewController {
             brain.getLocation(mapView: mapView!)
             brain.savePoo(location: locationText!, description: descriptionText!)
             brain.queryAndStore()
-            brain.loopCoordinates(mapView: mapView!)
+            brain.loopCoordinates()
             brain.placeMarkers(mapView: mapView!)
   //          brain.markerLocationList()
             
@@ -73,7 +73,7 @@ class FlushViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pooImageField.image = currentPoo
+        pooImageField.image = UIImage(named: currentPooString)
 
         // Do any additional setup after loading the view.
     }

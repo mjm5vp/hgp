@@ -20,6 +20,7 @@ var markPooImagesUI = [UIImage]()
 var markLocations = [String]()
 var markDescriptions = [String]()
 var markDates = [NSDate]()
+var markPooNames = [String]()
 
 
 
@@ -36,6 +37,8 @@ class PooBrain{
     var markers = [GMSMarker]()
     var dates = [NSDate]()
     var pooImagesUI = [UIImage]()
+    var imageNames = [String]()
+    var pooNames = [String]()
     
     
     var markerAccLabel = 0
@@ -55,8 +58,9 @@ class PooBrain{
         if userLocation.latitude != 0 && userLocation.longitude != 0 {
     
             let pooMarker = PFObject(className: "PooMarker")
-            let imageData = UIImagePNGRepresentation(currentPoo!)
-            let imageFile = PFFile(data: imageData!)
+  //          let imageData = UIImagePNGRepresentation(currentPoo!)
+  //          let imageFile = PFFile(data: imageData!)
+ //           let imageName = currentPoo.image.
     
             pooMarker["userid"] = PFUser.current()?.objectId!
             if addBool == false {
@@ -65,7 +69,8 @@ class PooBrain{
                 print("tapmarker lat\(tapMarker.position.latitude)")
                 pooMarker["location"] = PFGeoPoint(latitude: tapMarker.position.latitude, longitude: tapMarker.position.longitude)
             }
-            pooMarker["pooImage"] = imageFile
+ //           pooMarker["pooImage"] = imageFile
+            pooMarker["restorationID"] = currentPooString
             pooMarker["locationDescription"] = location
             pooMarker["descriptionDescription"] = description
             
@@ -88,12 +93,13 @@ class PooBrain{
     
         let query = PFQuery(className: "PooMarker")
     
-        pooImages.removeAll()
+//        pooImages.removeAll()
         coordinates.removeAll()
         locations.removeAll()
         descriptions.removeAll()
         markers.removeAll()
         dates.removeAll()
+        pooNames.removeAll()
     
         query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
         query.order(byDescending: "createdAt")
@@ -107,7 +113,8 @@ class PooBrain{
     
                 for user in users {
     
-                    self.pooImages.append(user["pooImage"] as! PFFile)
+  //                  self.pooImages.append(user["pooImage"] as! PFFile)
+                    self.pooNames.append(user["restorationID"] as! String)
                     self.coordinates.append(CLLocationCoordinate2D(latitude: (user["location"] as AnyObject).latitude, longitude: (user["location"] as AnyObject).longitude))
                     self.locations.append(user["locationDescription"] as! String)
                     self.descriptions.append(user["descriptionDescription"] as! String)
@@ -121,9 +128,9 @@ class PooBrain{
         print("locations count: \(locations.count)")
     }
  
-    func loopCoordinates(mapView: GMSMapView){
+    func loopCoordinates(){
         var i = 0
-        pooImagesUI.removeAll()
+ //       pooImagesUI.removeAll()
         
         if coordinates.count > 0 {
     
@@ -132,31 +139,31 @@ class PooBrain{
    //             pooMarkerMap.title = locations[i]
    //             pooMarkerMap.snippet = descriptions[i]
   //            pooMarkerMap.tracksInfoWindowChanges = true
-                pooImages[i].getDataInBackground { (data, error) in
-                    if let imageData = data {
-                        if let pooImageIcon = UIImage(data: imageData){
-                            pooMarkerMap.icon = self.imageWithImage(image: pooImageIcon, scaledToSize: CGSize(width: 40.0, height: 40.0))
-                            self.pooImagesUI.append(pooMarkerMap.icon!)
+  //              pooImages[i].getDataInBackground { (data, error) in
+  //                  if let imageData = data {
+  //                      if let pooImageIcon = UIImage(data: imageData){
+                let pooMarkerImage = UIImage(named: pooNames[i])
+                            pooMarkerMap.icon = imageWithImage(image: pooMarkerImage!, scaledToSize: CGSize(width: 40.0, height: 40.0))
+    //                        pooImagesUI.append(pooMarkerMap.icon!)
 
-                            
+                markers.append(pooMarkerMap)
+                i += 1
                         }
                         
                     }
 
                 }
                 
-                self.markers.append(pooMarkerMap)
-                i += 1
+
                 
 
 
     
-        }
-        
-        print ("coordinates count \(coordinates.count)")
     
-    }
-    }
+        
+
+
+
 
     func placeMarkers(mapView: GMSMapView){
         var i = 0
@@ -246,19 +253,21 @@ func printStuff(){
         markLocations.removeAll()
         markDescriptions.removeAll()
         markDates.removeAll()
+        markPooNames.removeAll()
 
     
         for coordinate in coordinates{
             if coordinate.latitude == compareLocation.latitude {
                 
-                print("added")
-                print(pooImagesUI.count)
+                print("mark table added")
+                print("pooImgagesUI count: \(pooImagesUI.count)")
                 
 
-                markPooImagesUI.append(pooImagesUI[i])
+  //              markPooImagesUI.append(pooImagesUI[i])
                 markLocations.append(self.locations[i])
                 markDescriptions.append(self.descriptions[i])
                 markDates.append(self.dates[i])
+                markPooNames.append(self.pooNames[i])
                 
                         }
             
@@ -267,6 +276,12 @@ func printStuff(){
             print(i)
         }
     }
+    
+//    func convertMark(file: PFfile){
+        
+//    }
+    
+
     
 }
 

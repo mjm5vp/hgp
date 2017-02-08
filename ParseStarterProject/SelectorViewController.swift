@@ -9,6 +9,7 @@
 import UIKit
 
 var currentPoo = UIImage(named: "basic.png")
+var currentPooString = ""
 
 
 class SelectorViewController: UIViewController {
@@ -39,7 +40,8 @@ class SelectorViewController: UIViewController {
         */
         
         
-        currentPoo = sender.currentImage
+ //       currentPoo = sender.currentImage
+        currentPooString = sender.restorationIdentifier!
         
         
      //   mapBackController.pooPlacer.image = currentPoo
@@ -62,7 +64,7 @@ class SelectorViewController: UIViewController {
         if segue.identifier == "unwindToMenu" {
             let destViewController: MapViewController = segue.destination as! MapViewController
             
-            destViewController.pooPlacer.image = currentPoo
+            destViewController.pooPlacer.image = UIImage(named: currentPooString)
             destViewController.pooPlacer.isHidden = false
             destViewController.toiletOutlet.isHidden = false
         }else if segue.identifier == "toFlush" {

@@ -88,7 +88,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
  
         brain.getLocation(mapView: mapView)
         brain.queryAndStore()
-        brain.loopCoordinates(mapView: mapView)
+        brain.loopCoordinates()
         brain.placeMarkers(mapView: mapView)
 
         
