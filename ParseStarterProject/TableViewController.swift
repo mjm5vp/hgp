@@ -58,6 +58,7 @@ class TableViewController: UITableViewController {
 
         if markBool == false {
             return brain.coordinates.count
+            print("table cells count: \(brain.coordinates.count)")
         }
         else{
             return markDescriptions.count
@@ -121,17 +122,70 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+ //           brain.deletePoo(index: indexPath.row)
+ //           brain.queryAndStore()
+ //           removeObjectAtIndexPath(indexPath)
+ //           tableView.reloadData()
+            
+            var objectID = ""
+            
+            if markBool == false {
+         objectID = brain.objectIDs[indexPath.row]
+            } else {
+         objectID = markObjectIDs[indexPath.row]
+            }
+                
+                
+        let query = PFQuery(className: "PooMarker")
+        query.whereKey("objectId", equalTo: objectID)
+        
+        
+        query.findObjectsInBackground(block: { (objects, error) in
+            if error != nil {
+                print("THERE WAS AN ERROR DELETING THE OBJECT")
+            }else{
+                for object in objects!{
+                    
+                    object.deleteInBackground()
+                    
+                    
+                }
+//                self.tableView.beginUpdates()
+                if markBool == false{
+                    self.brain.coordinates.remove(at: indexPath.row)
+                    self.brain.dates.remove(at: indexPath.row)
+                    self.brain.descriptions.remove(at: indexPath.row)
+                    self.brain.pooNames.remove(at: indexPath.row)
+                    self.brain.locations.remove(at: indexPath.row)
+                } else{
+                    markDates.remove(at: indexPath.row)
+                    markDescriptions.remove(at: indexPath.row)
+                    markPooNames.remove(at: indexPath.row)
+                    markLocations.remove(at: indexPath.row)
+                }
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+ //               self.brain.queryAndStore()
+                self.tableView.reloadData()
+//                self.tableView.endUpdates()
+                
+            }
+        })
+            
+            
+    
+            
+ //           self.tableView.reloadData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.

@@ -21,6 +21,7 @@ var markLocations = [String]()
 var markDescriptions = [String]()
 var markDates = [NSDate]()
 var markPooNames = [String]()
+var markObjectIDs = [String]()
 
 
 
@@ -39,6 +40,7 @@ class PooBrain{
     var pooImagesUI = [UIImage]()
     var imageNames = [String]()
     var pooNames = [String]()
+    var objectIDs = [String]()
     
     
     var markerAccLabel = 0
@@ -100,6 +102,7 @@ class PooBrain{
         markers.removeAll()
         dates.removeAll()
         pooNames.removeAll()
+        objectIDs.removeAll()
     
         query.whereKey("userid", equalTo: (PFUser.current()?.objectId)!)
         query.order(byDescending: "createdAt")
@@ -119,6 +122,8 @@ class PooBrain{
                     self.locations.append(user["locationDescription"] as! String)
                     self.descriptions.append(user["descriptionDescription"] as! String)
                     self.dates.append(user.createdAt as! NSDate)
+                    self.objectIDs.append(user.objectId! as String)
+                    
     
                 }
             }
@@ -143,7 +148,8 @@ class PooBrain{
   //                  if let imageData = data {
   //                      if let pooImageIcon = UIImage(data: imageData){
                 let pooMarkerImage = UIImage(named: pooNames[i])
-                            pooMarkerMap.icon = imageWithImage(image: pooMarkerImage!, scaledToSize: CGSize(width: 40.0, height: 40.0))
+                pooMarkerMap.icon = imageWithImage(image: pooMarkerImage!, scaledToSize: CGSize(width: 40.0, height: 40.0))
+                pooMarkerMap.accessibilityLabel = "\(i)"
     //                        pooImagesUI.append(pooMarkerMap.icon!)
 
                 markers.append(pooMarkerMap)
@@ -167,12 +173,13 @@ class PooBrain{
 
     func placeMarkers(mapView: GMSMapView){
         var i = 0
-        markers = removeDuplicates(values: markers)
-        for marker in markers {
-            marker.accessibilityLabel = "\(i)"
+        let newMarkers = removeDuplicates(values: markers)
+        for marker in newMarkers {
+//            marker.accessibilityLabel = "\(i)"
             marker.map = mapView
+//            marker.
 //            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
-            marker.accessibilityLabel = "\(i)"
+//            marker.accessibilityLabel = "\(i)"
             i += 1
         }
         print("markers = \(markers)")
@@ -254,6 +261,7 @@ func printStuff(){
         markDescriptions.removeAll()
         markDates.removeAll()
         markPooNames.removeAll()
+        markObjectIDs.removeAll()
 
     
         for coordinate in coordinates{
@@ -268,6 +276,7 @@ func printStuff(){
                 markDescriptions.append(self.descriptions[i])
                 markDates.append(self.dates[i])
                 markPooNames.append(self.pooNames[i])
+                markObjectIDs.append(self.objectIDs[i])
                 
                         }
             
@@ -281,7 +290,26 @@ func printStuff(){
         
 //    }
     
+    func deletePoo(index: Int){
+        let objectID = objectIDs[index]
+        let query = PFQuery(className: "PooMarker")
+        query.whereKey("objectId", equalTo: objectID)
+        
+        
+        query.findObjectsInBackground(block: { (objects, error) in
+            if error != nil {
+                print("THERE WAS AN ERROR DELETING THE OBJECT")
+            }else{
+                for object in objects!{
 
+                    object.deleteInBackground()
+
+                }
+            }
+        })
+        
+        
+    }
     
 }
 

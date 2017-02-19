@@ -112,6 +112,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         toiletOutlet.isHidden = true
         infoView.isHidden = true
    */
+        
+        infoView.isHidden = true
+        brain.queryAndStore()
+        
 
     }
 
@@ -147,7 +151,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         infoView.isHidden = false
         brain.markerAccLabel = Int(marker.accessibilityLabel!)!
+        locationLabel.text = brain.locations[brain.markerAccLabel]
+        descriptionLabel.text = brain.descriptions[brain.markerAccLabel]
+        dateLabel.text = brain.formatDate(dateInput: brain.dates[brain.markerAccLabel])
         tapMarker = marker
+//        brain.queryAndStore()
+        print("acclabel: \(brain.markerAccLabel)")
+        print("location 0: \(brain.locations[0])")
         return false
     }
     
@@ -280,6 +290,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        infoView.isHidden = true
+    }
+    
+//     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+//        infoView.isHidden = true
+//    }
+    
+    
+    
 }
 
