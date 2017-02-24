@@ -9,15 +9,19 @@
 import UIKit
 import Parse
 import GoogleMaps
+import FBSDKLoginKit
 
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
+    let loginButton : FBSDKLoginButton = FBSDKLoginButton()
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     var signUpMode = false
+    var fbLoginSucess = false
     
     
     @IBOutlet weak var loginOrSignUpButton: UIButton!
@@ -44,6 +48,8 @@ class LoginViewController: UIViewController {
                         self.displayAlert(title: "Sign Up Failed", message: displayedErrorMessage)
                         }
                         else {
+                            self.performSegue(withIdentifier: "toMenuSegue", sender: self)
+
                             print("Sign Up Successful")
                         }
                     })
@@ -81,7 +87,7 @@ class LoginViewController: UIViewController {
                         
                         print("Logged in")
                         
-//                        self.performSegue(withIdentifier: "showUserTable", sender: self)
+                        self.performSegue(withIdentifier: "toMenuSegue", sender: self)
                         
                     }
                     
@@ -133,8 +139,94 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
      confirmPassword.isHidden = true
+        
+        FBSDKLoginManager().logOut()
+
+        
+        if (FBSDKAccessToken.current() != nil)
+        {
+            
+           performSegue(withIdentifier: "toMenuSegue", sender: self)
+            
+            print("Facebook Logged In")
+            
+        }
+        else
+        {
+            
+            
+            loginButton.center = self.view.center
+            
+            loginButton.readPermissions = ["public_profile", "email"]
+            
+            loginButton.delegate = self
+            
+            self.view.addSubview(loginButton)
+        }
 
         // Do any additional setup after loading the view.
+    }
+    
+
+    
+    /////FACEBOOK
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        if error != nil
+        {
+            
+            print(error)
+            
+        }
+        else if result.isCancelled {
+            
+            print("User cancelled login")
+            
+        }
+        else {
+            
+            
+            if result.grantedPermissions.contains("email")
+            {
+                
+                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]) {
+                    
+                    graphRequest.start(completionHandler: { (connection, result, error) in
+                        
+                        if error != nil {
+                            
+                            print(error)
+                            
+                        } else {
+                            
+                            self.fbLoginSucess = true
+                            self.performSegue(withIdentifier: "toMenuSegue", sender: self)
+                            
+                            if let userDetails = result as? [String: String] {
+
+                                
+                                print(userDetails["email"])
+                                
+                            }
+                            
+                        }
+                        
+                        
+                    })
+                    
+                    
+                }
+                
+                
+                
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+        print("Logged out")
+        
     }
 
     override func didReceiveMemoryWarning() {

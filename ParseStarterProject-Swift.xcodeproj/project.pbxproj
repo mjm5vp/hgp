@@ -49,6 +49,13 @@
 		0799E7F21DA722E5004D610E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0799E7F11DA722E5004D610E /* CoreLocation.framework */; };
 		07A871FC1E3AA37900279E92 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A871FB1E3AA37900279E92 /* InfoWindow.xib */; };
 		07A872041E3AA81900279E92 /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A872031E3AA81900279E92 /* InfoWindow.swift */; };
+		07ACA9F41E5BDEA900AC9758 /* globe-1311757.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07ACA9F31E5BDEA900AC9758 /* globe-1311757.jpg */; };
+		07ACA9F61E5BDEB400AC9758 /* map-428639.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07ACA9F51E5BDEB400AC9758 /* map-428639.jpg */; };
+		07ACA9F81E5BDEBC00AC9758 /* feet-1031365.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07ACA9F71E5BDEBC00AC9758 /* feet-1031365.jpg */; };
+		07ACA9FD1E5FCD2900AC9758 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ACA9FA1E5FCD2900AC9758 /* FBSDKCoreKit.framework */; };
+		07ACA9FE1E5FCD2900AC9758 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ACA9FB1E5FCD2900AC9758 /* FBSDKLoginKit.framework */; };
+		07ACA9FF1E5FCD2900AC9758 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07ACA9FC1E5FCD2900AC9758 /* FBSDKShareKit.framework */; };
+		07ACAA021E5FE36E00AC9758 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07ACAA011E5FE36E00AC9758 /* SettingsViewController.swift */; };
 		07C27D3B1E2DD8CD004231BF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3A1E2DD8CD004231BF /* TableViewController.swift */; };
 		07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */; };
 		07C27D3F1E2FC9C6004231BF /* FlushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */; };
@@ -107,6 +114,14 @@
 		0799E7F11DA722E5004D610E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		07A871FB1E3AA37900279E92 /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
 		07A872031E3AA81900279E92 /* InfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
+		07ACA9F31E5BDEA900AC9758 /* globe-1311757.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "globe-1311757.jpg"; sourceTree = "<group>"; };
+		07ACA9F51E5BDEB400AC9758 /* map-428639.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "map-428639.jpg"; sourceTree = "<group>"; };
+		07ACA9F71E5BDEBC00AC9758 /* feet-1031365.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "feet-1031365.jpg"; sourceTree = "<group>"; };
+		07ACA9FA1E5FCD2900AC9758 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		07ACA9FB1E5FCD2900AC9758 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		07ACA9FC1E5FCD2900AC9758 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		07ACAA001E5FD2EF00AC9758 /* ParseStarterProject-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ParseStarterProject-Swift.entitlements"; sourceTree = "<group>"; };
+		07ACAA011E5FE36E00AC9758 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		07C27D3A1E2DD8CD004231BF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlushViewController.swift; sourceTree = "<group>"; };
@@ -137,11 +152,14 @@
 			files = (
 				0799E7F21DA722E5004D610E /* CoreLocation.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
+				07ACA9FE1E5FCD2900AC9758 /* FBSDKLoginKit.framework in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
 				81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */,
 				81BA81771A49E0D500E65899 /* libsqlite3.dylib in Frameworks */,
+				07ACA9FF1E5FCD2900AC9758 /* FBSDKShareKit.framework in Frameworks */,
 				81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
+				07ACA9FD1E5FCD2900AC9758 /* FBSDKCoreKit.framework in Frameworks */,
 				01EE02E85AFC6E9D0FFF8DB9 /* libPods-ParseStarterProject-Swift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +188,7 @@
 				07A872031E3AA81900279E92 /* InfoWindow.swift */,
 				077BAA3D1E21DE01004964CD /* LoginViewController.swift */,
 				07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */,
+				07ACAA011E5FE36E00AC9758 /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +242,16 @@
 			path = "/Users/MarkMoeller/Desktop/Desktop/Dev/Hoos Going Poo/Hoos Going Poo/../pooImage";
 			sourceTree = "<absolute>";
 		};
+		07ACA9F91E5FCD2900AC9758 /* Facebook_Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07ACA9FA1E5FCD2900AC9758 /* FBSDKCoreKit.framework */,
+				07ACA9FB1E5FCD2900AC9758 /* FBSDKLoginKit.framework */,
+				07ACA9FC1E5FCD2900AC9758 /* FBSDKShareKit.framework */,
+			);
+			path = Facebook_Frameworks;
+			sourceTree = "<group>";
+		};
 		3CF841EC69A5E1BAA4A4E0E3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +266,9 @@
 			children = (
 				0799E7D01DA71EE2004D610E /* pooImage */,
 				814C3AC81B69877600E307BB /* Images.xcassets */,
+				07ACA9F31E5BDEA900AC9758 /* globe-1311757.jpg */,
+				07ACA9F51E5BDEB400AC9758 /* map-428639.jpg */,
+				07ACA9F71E5BDEBC00AC9758 /* feet-1031365.jpg */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 			);
 			path = Resources;
@@ -245,7 +277,9 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				07ACAA001E5FD2EF00AC9758 /* ParseStarterProject-Swift.entitlements */,
 				078D5F2A1E498845008E3889 /* PodFile */,
+				07ACA9F91E5FCD2900AC9758 /* Facebook_Frameworks */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
 				81BA816A1A49DB5600E65899 /* Frameworks */,
@@ -333,7 +367,13 @@
 				TargetAttributes = {
 					81BA81441A49DA1800E65899 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = RYWMRVL456;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -361,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0799E7E51DA71EE2004D610E /* basketball.png in Resources */,
+				07ACA9F61E5BDEB400AC9758 /* map-428639.jpg in Resources */,
 				0799E7DA1DA71EE2004D610E /* roses.png in Resources */,
 				0799E7E41DA71EE2004D610E /* sunglasses.png in Resources */,
 				0799E7E61DA71EE2004D610E /* gay.png in Resources */,
@@ -394,9 +435,11 @@
 				0799E7D81DA71EE2004D610E /* basic.png in Resources */,
 				0799E7D51DA71EE2004D610E /* redAngry.png in Resources */,
 				0799E7ED1DA71EE2004D610E /* kiss.png in Resources */,
+				07ACA9F81E5BDEBC00AC9758 /* feet-1031365.jpg in Resources */,
 				0799E7D61DA71EE2004D610E /* birthday.png in Resources */,
 				078D5F2B1E498845008E3889 /* PodFile in Resources */,
 				0799E7D41DA71EE2004D610E /* beer.png in Resources */,
+				07ACA9F41E5BDEA900AC9758 /* globe-1311757.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +509,7 @@
 				07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */,
 				077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */,
 				07FD00FB1E46B578001EDEB2 /* MarkerTableViewController.swift in Sources */,
+				07ACAA021E5FE36E00AC9758 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +551,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDK";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -554,6 +599,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDK";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -576,10 +622,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = "ParseStarterProject-Swift.entitlements";
+				DEVELOPMENT_TEAM = RYWMRVL456;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Facebook_Frameworks",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -595,10 +643,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = "ParseStarterProject-Swift.entitlements";
+				DEVELOPMENT_TEAM = RYWMRVL456;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Facebook_Frameworks",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

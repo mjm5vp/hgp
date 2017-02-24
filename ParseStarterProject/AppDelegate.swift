@@ -11,6 +11,8 @@ import UIKit
 
 import Parse
 import GoogleMaps
+import FBSDKLoginKit
+
 
 
 // If you want to use any of the UI components, uncomment this line
@@ -55,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
         // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
         // PFFacebookUtils.initializeFacebook()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // ****************************************************************************
 
         //PFUser.enableAutomaticUser()
@@ -164,7 +167,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///////////////////////////////////////////////////////////
     // Uncomment this method if you are using Facebook
     ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-    // }
+
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        FBSDKAppEvents.activateApp()
+        
+    }
 }

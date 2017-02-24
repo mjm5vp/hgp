@@ -177,6 +177,7 @@ class PooBrain{
         for marker in newMarkers {
 //            marker.accessibilityLabel = "\(i)"
             marker.map = mapView
+            marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
 //            marker.
 //            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.2)
 //            marker.accessibilityLabel = "\(i)"

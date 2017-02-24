@@ -16,6 +16,7 @@ import GoogleMaps
 class TableViewController: UITableViewController {
     
     var brain = PooBrain()
+    var rowSelect = 0
 
     
 
@@ -185,6 +186,15 @@ class TableViewController: UITableViewController {
         }    
     
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        
+        rowSelect = indexPath.row
+        currentPooString = brain.pooNames[indexPath.row]
+        
+        performSegue(withIdentifier: "cellToFlushSegue", sender: AnyObject.self)
+    }
  
 
     /*
@@ -202,14 +212,24 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    if segue.identifier == "cellToFlushSegue"{
+        let destViewController: FlushViewController = segue.destination as! FlushViewController
+        print("row select: \(rowSelect)")
+        print("locations count: \(brain.locations.count)")
+        destViewController.currentLocationFlush = brain.locations[rowSelect]
+        destViewController.currentDescriptionFlush = brain.descriptions[rowSelect]
+        destViewController.currentDateFlush = brain.dates[rowSelect]
+        destViewController.updateBool = true
+        destViewController.currentButtonTitle = "Update"
+
+        }
     }
-    */
+ 
 
 }

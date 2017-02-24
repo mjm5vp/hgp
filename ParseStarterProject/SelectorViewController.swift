@@ -68,6 +68,10 @@ class SelectorViewController: UIViewController {
             destViewController.pooPlacer.isHidden = false
             destViewController.toiletOutlet.isHidden = false
         }else if segue.identifier == "toFlush" {
+            let dVCflush: FlushViewController = segue.destination as! FlushViewController
+            
+            dVCflush.currentButtonTitle = "Flush"
+            dVCflush.updateBool = false
             
         }
     }

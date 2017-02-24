@@ -11,10 +11,10 @@ import UIKit
 import Parse
 import GoogleMaps
 import CoreLocation
+import FBSDKLoginKit
 
 
-
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     var brain = PooBrain()
 //    var mVC = MapViewController()
@@ -24,11 +24,14 @@ class ViewController: UIViewController {
     
         
     }
+    @IBAction func viewSettingsButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "toSettingsSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-       
+
         
     }
     
@@ -45,4 +48,7 @@ class ViewController: UIViewController {
             markBool = false
         }
     }
+    
+
+
 }

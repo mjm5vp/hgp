@@ -11,13 +11,21 @@ import GoogleMaps
 import CoreLocation
 
 
+
+
+
 class FlushViewController: UIViewController {
     
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var pooImageField: UIImageView!
-    
-
+    @IBOutlet weak var pooImageField: UIImageView!    
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var flushUpdateOutlet: UIButton!
+    var currentLocationFlush = ""
+    var currentDescriptionFlush = ""
+    var currentDateFlush = NSDate()
+    var currentButtonTitle = ""
+    var updateBool = false
     
     
     var brain = PooBrain()
@@ -73,7 +81,21 @@ class FlushViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        descriptionTextField.frame.size.height = 60
+        
+        
         pooImageField.image = UIImage(named: currentPooString)
+        locationTextField.text = currentLocationFlush
+        descriptionTextField.text = currentDescriptionFlush
+        flushUpdateOutlet.setTitle(currentButtonTitle, for: .normal)
+        
+        if updateBool == true {
+            dateTextField.text = brain.formatDate(dateInput: currentDateFlush)
+        }else {
+            let curDate = Date() as NSDate
+            dateTextField.text = brain.formatDate(dateInput: curDate)
+        }
+        
 
         // Do any additional setup after loading the view.
     }

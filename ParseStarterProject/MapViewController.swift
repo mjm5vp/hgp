@@ -114,7 +114,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
    */
         
         infoView.isHidden = true
+        mapView.clear()
         brain.queryAndStore()
+        brain.loopCoordinates()
+        brain.placeMarkers(mapView: mapView)
         
 
     }
@@ -280,10 +283,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
  //       let destViewController: SelectorViewController = segue.destination as! SelectorViewController
         
+        
         if segue.identifier == "addSeg"{
             addBool = true
         }else if segue.identifier == "seg2" {
             addBool = false
+            let dVC2: FlushViewController = segue.destination as! FlushViewController
+            dVC2.currentButtonTitle = "Flush"
+            dVC2.updateBool = false
         }else {
             addBool = false
         }
