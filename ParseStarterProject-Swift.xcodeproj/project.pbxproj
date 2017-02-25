@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01EE02E85AFC6E9D0FFF8DB9 /* libPods-ParseStarterProject-Swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */; };
 		070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070288A21E2FF58300F33D9B /* PooBrain.swift */; };
-		070C9DA61E60FB0C0077E88C /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 070C9DA51E60FB0C0077E88C /* PodFile */; };
 		077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA391E1F4510004964CD /* toilet copy.png */; };
 		077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */; };
 		077BAA3E1E21DE01004964CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3D1E21DE01004964CD /* LoginViewController.swift */; };
@@ -59,7 +57,9 @@
 		07C27D3B1E2DD8CD004231BF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3A1E2DD8CD004231BF /* TableViewController.swift */; };
 		07C27D3D1E2DD8F7004231BF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */; };
 		07C27D3F1E2FC9C6004231BF /* FlushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */; };
+		07F37F9F1E620FF00016ED10 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 07F37F9E1E620FF00016ED10 /* PodFile */; };
 		07FD00FB1E46B578001EDEB2 /* MarkerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FD00FA1E46B577001EDEB2 /* MarkerTableViewController.swift */; };
+		2770B46BEDCF7E3D3E4A5834 /* libPods-ParseStarterProject-Swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08ADEEC59D567B5B8F9CD504 /* libPods-ParseStarterProject-Swift.a */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -74,7 +74,6 @@
 
 /* Begin PBXFileReference section */
 		070288A21E2FF58300F33D9B /* PooBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PooBrain.swift; sourceTree = "<group>"; };
-		070C9DA51E60FB0C0077E88C /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		077BAA391E1F4510004964CD /* toilet copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toilet copy.png"; path = "/Users/MarkMoeller/Downloads/toilet copy.png"; sourceTree = "<absolute>"; };
 		077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
 		077BAA3D1E21DE01004964CD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +124,9 @@
 		07C27D3A1E2DD8CD004231BF /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		07C27D3C1E2DD8F7004231BF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		07C27D3E1E2FC9C6004231BF /* FlushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlushViewController.swift; sourceTree = "<group>"; };
+		07F37F9E1E620FF00016ED10 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		07FD00FA1E46B577001EDEB2 /* MarkerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerTableViewController.swift; sourceTree = "<group>"; };
+		08ADEEC59D567B5B8F9CD504 /* libPods-ParseStarterProject-Swift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParseStarterProject-Swift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFDD36C4A5EA93EE0282677 /* Pods-ParseStarterProject-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseStarterProject-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParseStarterProject-Swift/Pods-ParseStarterProject-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		BC29BDDDE2CCB1629311662E /* Pods-ParseStarterProject-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseStarterProject-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseStarterProject-Swift/Pods-ParseStarterProject-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParseStarterProject-Swift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +158,7 @@
 				81BA81711A49DB6800E65899 /* Parse.framework in Frameworks */,
 				81BA81701A49DB6800E65899 /* Bolts.framework in Frameworks */,
 				07ACA9FD1E5FCD2900AC9758 /* FBSDKCoreKit.framework in Frameworks */,
-				01EE02E85AFC6E9D0FFF8DB9 /* libPods-ParseStarterProject-Swift.a in Frameworks */,
+				2770B46BEDCF7E3D3E4A5834 /* libPods-ParseStarterProject-Swift.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +275,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
-				070C9DA51E60FB0C0077E88C /* PodFile */,
+				07F37F9E1E620FF00016ED10 /* PodFile */,
 				07ACAA001E5FD2EF00AC9758 /* ParseStarterProject-Swift.entitlements */,
 				07ACA9F91E5FCD2900AC9758 /* Facebook_Frameworks */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
@@ -312,7 +312,7 @@
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
 				81BA81751A49E0C500E65899 /* System Frameworks */,
-				D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */,
+				08ADEEC59D567B5B8F9CD504 /* libPods-ParseStarterProject-Swift.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,7 +422,7 @@
 				0799E7E81DA71EE2004D610E /* shootingPoo.png in Resources */,
 				077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */,
 				0799E7EB1DA71EE2004D610E /* fat.png in Resources */,
-				070C9DA61E60FB0C0077E88C /* PodFile in Resources */,
+				07F37F9F1E620FF00016ED10 /* PodFile in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 				0799E7DB1DA71EE2004D610E /* grin.png in Resources */,
 				0799E7EA1DA71EE2004D610E /* cry.png in Resources */,

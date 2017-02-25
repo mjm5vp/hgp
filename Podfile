@@ -1,6 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.1'
-
+platform :ios, '7.0'
 target 'ParseStarterProject-Swift' do
 pod 'GoogleMaps'
 pod 'ParseFacebookUtilsV4'
