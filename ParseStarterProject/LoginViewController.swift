@@ -203,25 +203,85 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             self.performSegue(withIdentifier: "toMenuSegue", sender: self)
                             
                             if let userDetails = result as? [String: String] {
-
-                                
-                                print(userDetails["email"])
+                            
+                            let userId:String = userDetails["id"] as! String!
+                            let userFirstName:String? = (userDetails["first_name"] as? String?)!
+                            let userLastName:String? = (userDetails["last_name"] as? String?)!
+                            let userEmail:String? = (userDetails["email"] as? String?)!
+                            
+                            
+                            print("\(userEmail)")
+                            
+                            let myUser:PFUser = PFUser.current()!
+                            
+                            // Save first name
+                            if(userFirstName != nil)
+                            {
+                                myUser.setObject(userFirstName!, forKey: "first_name")
                                 
                             }
                             
-                        }
-                        
-                        
-                    })
+                            //Save last name
+                            if(userLastName != nil)
+                            {
+                                myUser.setObject(userLastName!, forKey: "last_name")
+                            }
+                            
+                            // Save email address
+                            if(userEmail != nil)
+                            {
+                                myUser.setObject(userEmail!, forKey: "email")
+                            }
+                            
+//                            DispatchQueue.global(DispatchQueue.GlobalQueuePriority.default, 0).asynchronously() {
+                                
+                                // Get Facebook profile picture
+                                var userProfile = "https://graph.facebook.com/" + userId + "/picture?type=large"
+                                
+                                let profilePictureUrl = NSURL(string: userProfile)
+                                
+                                let profilePictureData = NSData(contentsOf: profilePictureUrl! as URL)
+                                
+                                if(profilePictureData != nil)
+                                {
+                                    let profileFileObject = PFFile(data:profilePictureData! as Data)
+                                    myUser.setObject(profileFileObject, forKey: "profile_picture")
+                                }
+                                
+                                
+                                myUser.signUpInBackground(block: { (success, error) in
+                                    
+                                    if(success)
+                                    {
+                                        print("User details are now updated")
+                                    }
+                                    
+                                })
+                            }
+                            
+                            }
+                            
+                        })
+                            
+//                            if let userDetails = result as? [String: String] {
+
+                                
+//                                print(userDetails["email"])
+                                
+ //                           }
+                            
                     
-                    
-                }
+                        
                 
                 
                 
+                        
             }
         }
-    }
+            }
+        }
+    
+    
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         

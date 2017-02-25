@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		01EE02E85AFC6E9D0FFF8DB9 /* libPods-ParseStarterProject-Swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */; };
 		070288A31E2FF58300F33D9B /* PooBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070288A21E2FF58300F33D9B /* PooBrain.swift */; };
+		070C9DA61E60FB0C0077E88C /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 070C9DA51E60FB0C0077E88C /* PodFile */; };
 		077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 077BAA391E1F4510004964CD /* toilet copy.png */; };
 		077BAA3C1E1F4F88004964CD /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */; };
 		077BAA3E1E21DE01004964CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BAA3D1E21DE01004964CD /* LoginViewController.swift */; };
-		078D5F2B1E498845008E3889 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 078D5F2A1E498845008E3889 /* PodFile */; };
 		0799E7AF1DA71DDF004D610E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0799E7AE1DA71DDF004D610E /* MapViewController.swift */; };
 		0799E7D11DA71EE2004D610E /* unicorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0799E7B01DA71EE2004D610E /* unicorn.png */; };
 		0799E7D21DA71EE2004D610E /* wine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0799E7B11DA71EE2004D610E /* wine.png */; };
@@ -74,10 +74,10 @@
 
 /* Begin PBXFileReference section */
 		070288A21E2FF58300F33D9B /* PooBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PooBrain.swift; sourceTree = "<group>"; };
+		070C9DA51E60FB0C0077E88C /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		077BAA391E1F4510004964CD /* toilet copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "toilet copy.png"; path = "/Users/MarkMoeller/Downloads/toilet copy.png"; sourceTree = "<absolute>"; };
 		077BAA3B1E1F4F87004964CD /* SelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
 		077BAA3D1E21DE01004964CD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		078D5F2A1E498845008E3889 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		0799E7AE1DA71DDF004D610E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0799E7B01DA71EE2004D610E /* unicorn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unicorn.png; sourceTree = "<group>"; };
 		0799E7B11DA71EE2004D610E /* wine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wine.png; sourceTree = "<group>"; };
@@ -135,12 +135,10 @@
 		81BA814C1A49DA1800E65899 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81BA816B1A49DB6800E65899 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		81BA816C1A49DB6800E65899 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		81BA816E1A49DB6800E65899 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		81BA81761A49E0D500E65899 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		81BA81781A49E0DB00E65899 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		BC29BDDDE2CCB1629311662E /* Pods-ParseStarterProject-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParseStarterProject-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParseStarterProject-Swift/Pods-ParseStarterProject-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParseStarterProject-Swift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -277,8 +275,8 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				070C9DA51E60FB0C0077E88C /* PodFile */,
 				07ACAA001E5FD2EF00AC9758 /* ParseStarterProject-Swift.entitlements */,
-				078D5F2A1E498845008E3889 /* PodFile */,
 				07ACA9F91E5FCD2900AC9758 /* Facebook_Frameworks */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
@@ -313,8 +311,6 @@
 				0799E7F11DA722E5004D610E /* CoreLocation.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
-				81BA816E1A49DB6800E65899 /* ParseFacebookUtils.framework */,
-				81BA81801A49E10C00E65899 /* ParseUI.framework */,
 				81BA81751A49E0C500E65899 /* System Frameworks */,
 				D46DA43748E22234421B8182 /* libPods-ParseStarterProject-Swift.a */,
 			);
@@ -426,6 +422,7 @@
 				0799E7E81DA71EE2004D610E /* shootingPoo.png in Resources */,
 				077BAA3A1E1F4510004964CD /* toilet copy.png in Resources */,
 				0799E7EB1DA71EE2004D610E /* fat.png in Resources */,
+				070C9DA61E60FB0C0077E88C /* PodFile in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 				0799E7DB1DA71EE2004D610E /* grin.png in Resources */,
 				0799E7EA1DA71EE2004D610E /* cry.png in Resources */,
@@ -437,7 +434,6 @@
 				0799E7ED1DA71EE2004D610E /* kiss.png in Resources */,
 				07ACA9F81E5BDEBC00AC9758 /* feet-1031365.jpg in Resources */,
 				0799E7D61DA71EE2004D610E /* birthday.png in Resources */,
-				078D5F2B1E498845008E3889 /* PodFile in Resources */,
 				0799E7D41DA71EE2004D610E /* beer.png in Resources */,
 				07ACA9F41E5BDEA900AC9758 /* globe-1311757.jpg in Resources */,
 			);

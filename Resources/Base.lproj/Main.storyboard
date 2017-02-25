@@ -52,7 +52,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe-1311757.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-KY-Pum">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feet-1031365.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-KY-Pum">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxx-Nc-yIt">
@@ -61,7 +61,7 @@
                                 <color key="backgroundColor" red="1" green="0.66551597470000001" blue="0.21063839670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="View Map">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Td-eS-k80">
-                                <rect key="frame" x="154" y="318" width="56" height="30"/>
+                                <rect key="frame" x="135" y="318" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
@@ -904,10 +904,10 @@
         <image name="corn.png" width="80" height="80"/>
         <image name="cry.png" width="80" height="80"/>
         <image name="fat.png" width="80" height="80"/>
+        <image name="feet-1031365.jpg" width="2528" height="3735"/>
         <image name="fire.png" width="80" height="80"/>
         <image name="gay.png" width="80" height="80"/>
         <image name="girl.png" width="80" height="80"/>
-        <image name="globe-1311757.jpg" width="3264" height="4928"/>
         <image name="goblin.png" width="80" height="80"/>
         <image name="grin.png" width="80" height="80"/>
         <image name="hornsAngry.png" width="80" height="80"/>
